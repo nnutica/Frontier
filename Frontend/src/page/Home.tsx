@@ -1,5 +1,4 @@
 import "../index.css"
-
 function Home() {
 
     return (
@@ -17,7 +16,7 @@ function Home() {
       {/* Promo Card 1 */}
       <div className="bg-white rounded-lg shadow-lg overflow-hidden" style={{ width: '100%', height: 'auto' }}>
         <img
-          src="https://via.placeholder.com/200x150"
+          src="1pro"
           alt="Promo 1"
           className="w-full h-48 object-cover"
         />
