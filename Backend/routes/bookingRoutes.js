@@ -2,6 +2,7 @@ const express = require('express');
 const Booking = require('../models/Booking');
 const router = express.Router();
 
+
 // GET all bookings
 router.get('/', async (req, res) => {
     const bookings = await Booking.find();
@@ -21,13 +22,13 @@ router.delete('/:id', async (req, res) => {
     res.status(204).end();
 });
 // PUT update a booking
-router.put("/bookings/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
     try {
         const { id } = req.params;
         const updatedBooking = await Booking.findByIdAndUpdate(
             id,
             req.body,
-            { new: true, runValidators: true } // ใช้ runValidators เพื่อตรวจสอบความถูกต้อง
+            { new: true, runValidators: true }
         );
 
         if (!updatedBooking) return res.status(404).json({ message: "Booking not found" });
@@ -38,5 +39,24 @@ router.put("/bookings/:id", async (req, res) => {
         res.status(500).json({ message: "Error updating booking", error });
     }
 });
+
+router.get('/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        console.log("Requested ID:", id); // Log เพื่อตรวจสอบ ID ที่ถูกส่งเข้ามา
+        const booking = await Booking.findById(id); // ค้นหา booking ในฐานข้อมูล
+
+        if (!booking) {
+            return res.status(404).json({ message: 'Booking not found' }); // กรณีไม่เจอข้อมูล
+        }
+
+        res.json(booking); // ส่งข้อมูลกลับ
+    } catch (error) {
+        console.error("Error fetching booking:", error); // Log error หากเกิดข้อผิดพลาด
+        res.status(500).json({ message: 'Error fetching booking', error }); // ส่ง error กลับ
+    }
+});
+
+
 
 module.exports = router;

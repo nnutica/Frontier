@@ -15,48 +15,62 @@ const rooms = [
 ];
 
 const BookingUpdateModal: React.FC<Props> = ({ bookingId, onClose }) => {
-    const [guestName, setGuestName] = useState("");
-    const [roomType, setRoomType] = useState("");
-    const [guests, setGuests] = useState(1);
-    const [checkIn, setCheckIn] = useState("");
-    const [checkOut, setCheckOut] = useState("");
-    const [paymentStatus, setPaymentStatus] = useState("Pending");
+    const [formData, setFormData] = useState({
+        guestName: "",
+        roomType: "",
+        guests: 1,
+        checkIn: "",
+        checkOut: "",
+        paymentStatus: "Pending",
+    });
+    const [error, setError] = useState("");
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    const fetchBooking = async () => {
+        try {
+            console.log(`Fetching booking details for ID: ${bookingId}`);
+            const { data } = await axios.get(`api/bookings/${bookingId}`);
+            console.log('Fetched data:', data);
+            setFormData({
+                guestName: data.guestName,
+                roomType: data.roomType,
+                guests: data.guests,
+                checkIn: data.checkIn,
+                checkOut: data.checkOut,
+                paymentStatus: data.paymentStatus,
+            });
+        } catch (error) {
+            console.error('Error fetching booking:', error);
+            setError("Failed to load booking details. Please try again later.");
+        }
+    };
 
     useEffect(() => {
-        const fetchBooking = async () => {
-            try {
-                const response = await axios.get(`/api/bookings/${bookingId}`);
-                const booking = response.data;
-                setGuestName(booking.guestName);
-                setRoomType(booking.roomType);
-                setGuests(booking.guests);
-                setCheckIn(booking.checkIn);
-                setCheckOut(booking.checkOut);
-                setPaymentStatus(booking.paymentStatus);
-            } catch (error) {
-                console.error("Error fetching booking details:", error);
-            }
-        };
         fetchBooking();
     }, [bookingId]);
 
+    const validateForm = () => {
+        const { guestName, roomType, checkIn, checkOut } = formData;
+        if (!guestName || !roomType || !checkIn || !checkOut) {
+            setError("Please fill in all required fields.");
+            return false;
+        }
+        return true;
+    };
+
     const handleUpdate = async () => {
-        const updatedBooking = {
-            guestName,
-            roomType,
-            guests,
-            checkIn,
-            checkOut,
-            paymentStatus,
-        };
+        if (!validateForm()) return;
 
         try {
-            await axios.put(`/api/bookings/${bookingId}`, updatedBooking);
+            await axios.put(`/api/bookings/${bookingId}`, formData);
             alert("Booking updated successfully!");
             onClose();
         } catch (error) {
-            console.error("Error updating booking:", error);
-            alert("Failed to update booking.");
+            setError("Failed to update booking. Please try again.");
         }
     };
 
@@ -64,23 +78,29 @@ const BookingUpdateModal: React.FC<Props> = ({ bookingId, onClose }) => {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
             <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
                 <h2 className="text-xl font-bold mb-4">Update Booking</h2>
-                <form>
-                    <div className="mb-4">
+                {error && <p className="text-red-500 mb-4">{error}</p>}
+                <div className="space-y-4">
+                    <div>
                         <label className="block text-gray-700">Guest Name</label>
                         <input
                             type="text"
-                            value={guestName}
-                            onChange={(e) => setGuestName(e.target.value)}
+                            name="guestName"
+                            value={formData.guestName}
+                            onChange={handleChange}
                             className="w-full border rounded px-3 py-2"
                         />
                     </div>
-                    <div className="mb-4">
+                    <div>
                         <label className="block text-gray-700">Room Type</label>
                         <select
-                            value={roomType}
-                            onChange={(e) => setRoomType(e.target.value)}
+                            name="roomType"
+                            value={formData.roomType}
+                            onChange={handleChange}
                             className="w-full border rounded px-3 py-2"
                         >
+                            <option value="" disabled>
+                                Select a room type
+                            </option>
                             {rooms.map((room) => (
                                 <option key={room.type} value={room.type}>
                                     {room.type} - ฿{room.price} ({room.availableRooms} available)
@@ -88,49 +108,53 @@ const BookingUpdateModal: React.FC<Props> = ({ bookingId, onClose }) => {
                             ))}
                         </select>
                     </div>
-                    <div className="mb-4">
+                    <div>
                         <label className="block text-gray-700">Number of Guests</label>
                         <input
                             type="number"
-                            value={guests}
-                            onChange={(e) => setGuests(Number(e.target.value))}
+                            name="guests"
+                            value={formData.guests}
+                            onChange={(e) => setFormData({ ...formData, guests: Number(e.target.value) })}
                             className="w-full border rounded px-3 py-2"
                         />
                     </div>
-                    <div className="mb-4">
+                    <div>
                         <label className="block text-gray-700">Check-In</label>
                         <input
                             type="date"
-                            value={checkIn}
-                            onChange={(e) => setCheckIn(e.target.value)}
+                            name="checkIn"
+                            value={formData.checkIn}
+                            onChange={handleChange}
                             className="w-full border rounded px-3 py-2"
                         />
                     </div>
-                    <div className="mb-4">
+                    <div>
                         <label className="block text-gray-700">Check-Out</label>
                         <input
                             type="date"
-                            value={checkOut}
-                            onChange={(e) => setCheckOut(e.target.value)}
+                            name="checkOut"
+                            value={formData.checkOut}
+                            onChange={handleChange}
                             className="w-full border rounded px-3 py-2"
                         />
                     </div>
-                    <div className="mb-4">
+                    <div>
                         <label className="block text-gray-700">Payment Status</label>
                         <select
-                            value={paymentStatus}
-                            onChange={(e) => setPaymentStatus(e.target.value)}
+                            name="paymentStatus"
+                            value={formData.paymentStatus}
+                            onChange={handleChange}
                             className="w-full border rounded px-3 py-2"
                         >
                             <option value="Pending">Pending</option>
                             <option value="Paid">Paid</option>
                         </select>
                     </div>
-                    <div className="flex justify-end">
+                    <div className="flex justify-end space-x-2">
                         <button
                             type="button"
                             onClick={onClose}
-                            className="bg-gray-500 text-white px-4 py-2 rounded mr-2 hover:bg-gray-600"
+                            className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
                         >
                             Cancel
                         </button>
@@ -142,7 +166,7 @@ const BookingUpdateModal: React.FC<Props> = ({ bookingId, onClose }) => {
                             Update
                         </button>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     );
