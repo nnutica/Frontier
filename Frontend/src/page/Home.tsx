@@ -1,5 +1,13 @@
 import "../index.css"
 import Promotion1 from "../assets/Promotion1.png"
+import Promotion2 from "../assets/Promotion2.png"
+import Promotion3 from "../assets/Promotion3.png"
+import Promotion4 from "../assets/Promotion4.png"
+import Room1 from "../assets/room1.png"
+import Room2 from "../assets/room2.png"
+import Room3 from "../assets/room3.png"
+import Room4 from "../assets/room4.png"
+import Room5 from "../assets/room5.png"
 function Home() {
 
   return (
@@ -19,7 +27,7 @@ function Home() {
             <img
               src={Promotion1}
               alt="Promo 1"
-              className="w-full h-48 object-cover"
+              className="w-full h-auto object-cover"
             />
             <div className="p-4">
               <h3 className="text-xl font-semibold text-blue-600">โปรโมชั่น 1</h3>
@@ -34,9 +42,9 @@ function Home() {
           {/* Promo Card 2 */}
           <div className="bg-white rounded-lg shadow-lg overflow-hidden" style={{ width: '100%', height: 'auto' }}>
             <img
-              src="https://via.placeholder.com/200x150"
-              alt="Promo 2"
-              className="w-full h-48 object-cover"
+              src={Promotion3}
+              alt="Promo 3"
+              className="w-full h-auto object-cover"
             />
             <div className="p-4">
               <h3 className="text-xl font-semibold text-blue-600">โปรโมชั่น 2</h3>
@@ -51,9 +59,9 @@ function Home() {
           {/* Promo Card 3 */}
           <div className="bg-white rounded-lg shadow-lg overflow-hidden" style={{ width: '100%', height: 'auto' }}>
             <img
-              src="https://via.placeholder.com/200x150"
-              alt="Promo 3"
-              className="w-full h-48 object-cover"
+              src={Promotion2}
+              alt="Promo 2"
+              className="w-full h-auto object-cover"
             />
             <div className="p-4">
               <h3 className="text-xl font-semibold text-blue-600">โปรโมชั่น 3</h3>
@@ -68,9 +76,9 @@ function Home() {
           {/* Promo Card 4 */}
           <div className="bg-white rounded-lg shadow-lg overflow-hidden" style={{ width: '100%', height: 'auto' }}>
             <img
-              src="https://via.placeholder.com/200x150"
+              src={Promotion4}
               alt="Promo 4"
-              className="w-full h-48 object-cover"
+              className="w-full h-auto object-cover"
             />
             <div className="p-4">
               <h3 className="text-xl font-semibold text-blue-600">โปรโมชั่น 4</h3>
@@ -90,16 +98,16 @@ function Home() {
             {/* Room 1 */}
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
               <img
-                src="https://via.placeholder.com/400x300"
-                alt="Deluxe Room"
-                className="w-full h-48 object-cover"
+              src={Room1}
+              alt="Room 1"
+              className="w-full h-96 object-cover"
               />
               <div className="p-6">
                 <h2 className="text-2xl font-bold mb-2">Deluxe Room</h2>
                 <p className="text-gray-700 mb-4">
                   ห้องพักหรูหรา พร้อมวิวสวยงามและสิ่งอำนวยความสะดวกครบครัน
                 </p>
-                <p className="text-blue-500 font-semibold text-lg mb-4">฿2,500/คืน</p>
+                <p className="text-blue-500 font-semibold text-lg mb-4">฿1,200/คืน</p>
                 <button className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600">
                   จองเลย
                 </button>
@@ -109,16 +117,16 @@ function Home() {
             {/* Room 2 */}
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
               <img
-                src="https://via.placeholder.com/400x300"
-                alt="Family Suite"
-                className="w-full h-48 object-cover"
+              src={Room2}
+              alt="Room 2"
+              className="w-full h-96 object-cover"
               />
               <div className="p-6">
                 <h2 className="text-2xl font-bold mb-2">Family Suite</h2>
                 <p className="text-gray-700 mb-4">
                   ห้องพักสำหรับครอบครัว กว้างขวางและสะดวกสบาย
                 </p>
-                <p className="text-blue-500 font-semibold text-lg mb-4">฿4,500/คืน</p>
+                <p className="text-blue-500 font-semibold text-lg mb-4">฿2,500/คืน</p>
                 <button className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600">
                   จองเลย
                 </button>
@@ -128,16 +136,16 @@ function Home() {
             {/* Room 3 */}
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
               <img
-                src="https://via.placeholder.com/400x300"
-                alt="Standard Room"
-                className="w-full h-48 object-cover"
+              src={Room3}
+              alt="Room 3"
+              className="w-full h-96 object-cover"
               />
               <div className="p-6">
                 <h2 className="text-2xl font-bold mb-2">Standard Room</h2>
                 <p className="text-gray-700 mb-4">
                   ห้องพักมาตรฐาน สะอาดและคุ้มค่าราคา
                 </p>
-                <p className="text-blue-500 font-semibold text-lg mb-4">฿1,500/คืน</p>
+                <p className="text-blue-500 font-semibold text-lg mb-4">฿800/คืน</p>
                 <button className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600">
                   จองเลย
                 </button>
@@ -145,24 +153,45 @@ function Home() {
             </div>
 
             {/* Room 4 */}
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden px-4">
               <img
-                src="https://via.placeholder.com/400x300"
-                alt="Executive Suite"
-                className="w-full h-48 object-cover"
+              src={Room4}
+              alt="Room 4"
+              className="w-full h-96 object-cover"
               />
               <div className="p-6">
                 <h2 className="text-2xl font-bold mb-2">Luxury Suite</h2>
                 <p className="text-gray-700 mb-4">
                   ห้องพักพิเศษสำหรับผู้บริหาร พร้อมสิ่งอำนวยความสะดวกชั้นเยี่ยม
                 </p>
-                <p className="text-blue-500 font-semibold text-lg mb-4">฿6,000/คืน</p>
+                <p className="text-blue-500 font-semibold text-lg mb-4">฿5,000/คืน</p>
                 <button className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600">
                   จองเลย
                 </button>
               </div>
             </div>
           </div>
+          <br />
+          <br />
+          <br />
+          {/* Room 5 */}
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+              <img
+              src={Room5}
+              alt="Room 5"
+              className="w-full h-96 object-cover"
+              />
+              <div className="p-6">
+                <h2 className="text-2xl font-bold mb-2">Superstar</h2>
+                <p className="text-gray-700 mb-4">
+                  ห้องพักพิเศษสำหรับผู้บริหาร พร้อมสิ่งอำนวยความสะดวกชั้นเยี่ยม
+                </p>
+                <p className="text-blue-500 font-semibold text-lg mb-4">฿100,000/คืน</p>
+                <button className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600">
+                  จองเลย
+                </button>
+              </div>
+            </div>
         </main>
 
       </div>
