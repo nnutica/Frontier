@@ -1,4 +1,9 @@
 import React from "react";
+import room1 from "../assets/room1.png"
+import room2 from "../assets/room2.png"
+import room3 from "../assets/room3.png"
+import room4 from "../assets/room4.png"
+import room5 from "../assets/room5.png"
 
 interface Room {
     _id: string;
@@ -12,11 +17,31 @@ interface Props {
     onBook: () => void;
 }
 
+
+
+
+
 const RoomCard: React.FC<Props> = ({ room, onBook }) => {
+    const getImageUrl = (roomType: string) => {
+        switch (roomType) {
+            case "Standard":
+                return room3;
+            case "Deluxe":
+                return room1;
+            case "Family":
+                return room2;
+            case "Luxury":
+                return room4;
+            case "Superstar":
+                return room5;
+        }
+
+    }
+
     return (
         <div className="border rounded-lg shadow-md p-4">
             <img
-                src={`https://via.placeholder.com/400x300?text=${room.type}`}
+                src={getImageUrl(room.type)}
                 alt={room.type}
                 className="w-full h-48 object-cover rounded-md mb-4"
             />

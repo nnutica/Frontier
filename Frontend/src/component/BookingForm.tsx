@@ -18,6 +18,7 @@ const BookingModal: React.FC<Props> = ({ room, onClose }) => {
     const [checkIn, setCheckIn] = useState("");
     const [checkOut, setCheckOut] = useState("");
     const [paymentStatus, setPaymentStatus] = useState("Pending");
+    const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
     const handleBooking = async () => {
         const booking = {
@@ -29,11 +30,10 @@ const BookingModal: React.FC<Props> = ({ room, onClose }) => {
             checkOut,
             paymentStatus,
         };
-        console.log("Sending booking data:", booking);
+
         try {
             await axios.post("/api/bookings", booking);
-            alert("Booking successful!");
-            onClose();
+            setShowConfirmationModal(true);
         } catch (err) {
             console.error("Error booking room:", err);
             alert("Failed to book the room.");
@@ -102,6 +102,41 @@ const BookingModal: React.FC<Props> = ({ room, onClose }) => {
                     </div>
                 </form>
             </div>
+            {showConfirmationModal && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                    <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+                        <h2 className="text-xl font-bold mb-4">Booking Successful</h2>
+                        <p className="mb-4">
+                            Your booking has been completed successfully.
+                        </p>
+                        <p className="mb-4">
+                            If you choose "Pay Later," you can check your booking history in the Record page.
+                        </p>
+                        <div className="flex justify-end">
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    setShowConfirmationModal(false);
+                                    onClose();
+                                }}
+                                className="bg-gray-500 text-white px-4 py-2 rounded mr-2 hover:bg-gray-600"
+                            >
+                                Pay Later
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    setShowConfirmationModal(false);
+                                    alert("Redirecting to payment...");
+                                }}
+                                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                            >
+                                Pay Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
