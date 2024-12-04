@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Icon from "../../assets/icon.png";
 
-const Navbar: React.FC = () => {
+interface NavbarProps{
+  className?:string
+}
+
+
+const Navbar: React.FC<NavbarProps> = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {

@@ -6,52 +6,64 @@ interface Props {
     onClose: () => void;
 }
 
-const rooms = [
-    { type: "Standard", price: 800, availableRooms: 5 },
-    { type: "Deluxe", price: 1200, availableRooms: 5 },
-    { type: "Family", price: 2500, availableRooms: 5 },
-    { type: "Luxury", price: 5000, availableRooms: 5 },
-    { type: "Superstar", price: 100000, availableRooms: 1 },
-];
+interface Room {
+    type: string;
+    price: number;
+    availableRooms: number;
+}
 
 const BookingUpdateModal: React.FC<Props> = ({ bookingId, onClose }) => {
     const [formData, setFormData] = useState({
         guestName: "",
         roomType: "",
+        previousRoomType: "",
         guests: 1,
         checkIn: "",
         checkOut: "",
         paymentStatus: "Pending",
     });
+    const [rooms, setRooms] = useState<Room[]>([]);
     const [error, setError] = useState("");
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+    // Fetch available rooms from the database
+    const fetchRooms = async () => {
+        try {
+            const { data } = await axios.get("/api/rooms");
+            setRooms(data); // Assuming API returns an array of rooms
+        } catch (err) {
+            console.error("Error fetching rooms:", err);
+            setError("Failed to load available rooms.");
+        }
     };
 
+    // Fetch booking details by ID
     const fetchBooking = async () => {
         try {
-            console.log(`Fetching booking details for ID: ${bookingId}`);
-            const { data } = await axios.get(`api/bookings/${bookingId}`);
-            console.log('Fetched data:', data);
+            const { data } = await axios.get(`/api/bookings/${bookingId}`);
             setFormData({
                 guestName: data.guestName,
                 roomType: data.roomType,
+                previousRoomType: data.roomType, // เก็บค่าห้องเดิมไว้ใช้เปรียบเทียบ
                 guests: data.guests,
                 checkIn: data.checkIn,
                 checkOut: data.checkOut,
                 paymentStatus: data.paymentStatus,
             });
         } catch (error) {
-            console.error('Error fetching booking:', error);
+            console.error("Error fetching booking:", error);
             setError("Failed to load booking details. Please try again later.");
         }
     };
 
     useEffect(() => {
-        fetchBooking();
+        fetchRooms(); // Load rooms on component mount
+        fetchBooking(); // Load booking details on component mount
     }, [bookingId]);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
 
     const validateForm = () => {
         const { guestName, roomType, checkIn, checkOut } = formData;
@@ -66,10 +78,24 @@ const BookingUpdateModal: React.FC<Props> = ({ bookingId, onClose }) => {
         if (!validateForm()) return;
 
         try {
-            await axios.put(`/api/bookings/${bookingId}`, formData);
+            const { roomType, previousRoomType, ...rest } = formData;
+
+            // ถ้าห้องเดิมและห้องใหม่ไม่เหมือนกัน ให้ส่งคำขอไป backend
+            if (roomType !== previousRoomType) {
+                // เพิ่มห้องว่างให้ห้องเดิม
+                await axios.put(`/api/rooms/${previousRoomType}/increment`);
+
+                // ลดห้องว่างจากห้องใหม่
+                await axios.put(`/api/rooms/${roomType}/decrement`);
+            }
+
+            // อัปเดตข้อมูลการจอง
+            await axios.put(`/api/bookings/${bookingId}`, { ...rest, roomType });
+
             alert("Booking updated successfully!");
             onClose();
         } catch (error) {
+            console.error("Error updating booking:", error);
             setError("Failed to update booking. Please try again.");
         }
     };
@@ -114,7 +140,9 @@ const BookingUpdateModal: React.FC<Props> = ({ bookingId, onClose }) => {
                             type="number"
                             name="guests"
                             value={formData.guests}
-                            onChange={(e) => setFormData({ ...formData, guests: Number(e.target.value) })}
+                            onChange={(e) =>
+                                setFormData({ ...formData, guests: Number(e.target.value) })
+                            }
                             className="w-full border rounded px-3 py-2"
                         />
                     </div>
