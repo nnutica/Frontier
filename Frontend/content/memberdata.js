@@ -19,7 +19,7 @@ export const Korya ={
     name:"อมาวสุ ด้วงอินทร์",
     Role:"UI Structure Design,Frontend-Main-Developer",
     Frontend:"วางโครงร่างของหน้าเว็บ ",
-    Backend:"ดึงข้อมูลจากฐานข้อมูลมาลงหน้าต่างๆของเว็บ ",
+    Backend:"ดึงข้อมูลจากฐานข้อมูลมาลงหน้าต่างๆของเว็บ",
     StudentID:"1650704404"
     
 }

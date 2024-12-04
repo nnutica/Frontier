@@ -1,12 +1,12 @@
-function About() {
+function About() { 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
       {/* Header Section */}
       <header className="bg-gradient-to-r from-blue-500 to-blue-600 text-white py-16">
         <div className="container mx-auto px-6 text-center">
-          <h1 className="text-4xl font-bold mb-4">เกี่ยวกับ RoomSnap</h1>
+          <h1 className="text-4xl font-bold mb-4">เกี่ยวกับโรงแรม Frontier</h1>
           <p className="text-lg font-light">
-            แพลตฟอร์มการจองโรงแรมที่ตอบโจทย์ทุกความต้องการในการเดินทางของคุณ
+            โรงแรมที่มอบประสบการณ์การพักผ่อนสุดพิเศษในทุกช่วงเวลาของคุณ
           </p>
         </div>
       </header>
@@ -18,42 +18,31 @@ function About() {
             ประวัติความเป็นมา
           </h2>
           <p className="text-gray-700 leading-loose">
-            Frontier ก่อตั้งขึ้นด้วยพันธกิจที่จะทำให้การค้นหาและจองที่พักเป็นเรื่องง่ายและสะดวก
-            เราเชื่อมั่นในการมอบประสบการณ์การใช้งานที่ล้ำสมัย พร้อมด้วยที่พักหลากหลายประเภทที่เหมาะสมกับงบประมาณ
-            และความต้องการของผู้เดินทางทุกกลุ่ม
+          เว็บไซต์แสดงระบบการจองห้องพักของโรงแรม Frontier ก่อตั้งขึ้นด้วยความตั้งใจที่จะมอบที่พักที่อบอุ่น สะดวกสบาย 
+            และให้ความรู้สึกเหมือนบ้านสำหรับผู้เข้าพักทุกคน เราเน้นคุณภาพในการบริการ 
+            และสถานที่ที่ออกแบบมาเพื่อรองรับทุกความต้องการของลูกค้า
           </p>
         </section>
-
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-6 border-b-2 border-gray-300 pb-2">
-            ภารกิจของเรา
-          </h2>
-          <p className="text-gray-700 leading-loose">
-            เรามุ่งมั่นที่จะเป็นตัวเลือกอันดับหนึ่งสำหรับการจองโรงแรม ด้วยแพลตฟอร์มที่รวดเร็ว
-            เชื่อถือได้ และโปร่งใส พร้อมทั้งการให้บริการลูกค้าที่ยอดเยี่ยมและรองรับตลอด 24 ชั่วโมง
-          </p>
-        </section>
-
         <section>
           <h2 className="text-2xl font-semibold text-gray-800 mb-6 border-b-2 border-gray-300 pb-2">
-            สิ่งที่เราเชื่อมั่น
+          CRUD 
           </h2>
           <ul className="list-disc list-inside text-gray-700 space-y-3">
             <li className="leading-relaxed">
-              <span className="font-semibold text-gray-800">ความสะดวก:</span> 
-              แพลตฟอร์มที่ง่ายต่อการใช้งานและตอบโจทย์ทุกขั้นตอน
+              <span className="font-semibold text-gray-800">Create:</span> 
+              ผู้ใช้ สามารถสร้างการจองห้องพักผ่านหน้าเว็บ
             </li>
             <li className="leading-relaxed">
-              <span className="font-semibold text-gray-800">ความคุ้มค่า:</span> 
-              ข้อเสนอพิเศษที่มอบความประหยัดสูงสุดสำหรับลูกค้า
+              <span className="font-semibold text-gray-800">Read:</span> 
+              ผู้ใช้ สามารถดูประวัติการจองของตัวเองได้
             </li>
             <li className="leading-relaxed">
-              <span className="font-semibold text-gray-800">ความน่าเชื่อถือ:</span> 
-              ระบบที่ปลอดภัยและได้รับการยอมรับในมาตรฐานระดับสากล
+              <span className="font-semibold text-gray-800">Update:</span> 
+              ผู้ใช้ สามารถแก้ไข การจองของตัวเองได้
             </li>
             <li className="leading-relaxed">
-              <span className="font-semibold text-gray-800">บริการลูกค้า:</span> 
-              การสนับสนุนที่รวดเร็วและเป็นมิตรตลอด 24 ชั่วโมงทุกวัน
+              <span className="font-semibold text-gray-800">Delete:</span> 
+              ผู้ใช้ สามารถลบ การจองของตัวเองได้
             </li>
           </ul>
         </section>

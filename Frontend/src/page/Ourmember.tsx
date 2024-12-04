@@ -12,7 +12,7 @@ function Ourmember() {
                   </h2>
 
                   {/* Team Member Cards */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
 
                      
                       <div className="bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition duration-300">
@@ -21,13 +21,12 @@ function Ourmember() {
                               alt="นิตินัทธ์ ล้ออุทัย"
                               className="w-full h-48 object-cover"
                           />
-                          <div className="p-6 text-center">
-                              <h3 className="text-1m font-semibold text-gray-800">นิตินัทธ์ ล้ออุทัย</h3>
-                              <p className="text-gray-500 mt-2">ตำแหน่ง: หัวหน้า </p>
-                              <p className="text-gray-500">Project Manager: Design ระบบ วางแผนงาน แบ่งงาน </p>
-                              <p className="text-gray-500">Frontend: ทำให้สามารถเรียกใช้งานฟังก์ชั่นจากฝั่ง Frontendได้  </p>
-                              <p className="text-gray-500">Backend: ทำฟังก์ชั้น CRUD ทั้งระบบ สร้างDatabase  </p>
-                              <p className="text-gray-400 mt-4">ID: 1650703596</p>
+                          <div className="p-4">
+                              <h3 className="text-2xl font-semibold text-gray-800 text-center">นิตินัทธ์ ล้ออุทัย</h3>
+                              <span className=" bottom-font-semibold">ตำแหน่ง:</span><span className="text-blue-600 mt-2">Project Manager Design ระบบ วางแผนงาน แบ่งงาน</span><br />
+                              <span className=" bottom-font-semibold">Frontend:</span><span className="text-blue-600 mt-2">ทำให้สามารถเรียกใช้งานฟังก์ชั่นจากฝั่ง Frontendได้</span><br />
+                              <span className=" bottom-font-semibold">Backend:</span><span className="text-blue-600 mt-2">ทำฟังก์ชั้น CRUD ทั้งระบบ สร้างDatabase  </span><br />
+                              <span className=" bottom-font-semibold">ID:</span><span className="text-blue-600 mt-2">1650703596</span><br />
                           </div>
                       </div>
 
@@ -38,12 +37,12 @@ function Ourmember() {
                               alt="หรรษธร เกษียร"
                               className="w-full h-48 object-cover"
                           />
-                          <div className="p-6 text-center">
-                              <h3 className="text-1m font-semibold text-gray-800">หรรษธร เกษียร</h3>
-                              <p className="text-gray-500 mt-2">ตำแหน่ง: System Design ,Frontend-Main-Developer</p>
-                              <p className="text-gray-500">Frontend: ออกแบบ UI Design Systemของเว็บไซต์ </p>
-                              <p className="text-gray-500">Backend:เพิ่มปุ่มเรียกใช้ฟังก์ชั่นที่จะเรียกใช้ระบบหลังบ้าน  </p>
-                              <p className="text-gray-400 mt-4">ID: 1650700964</p>
+                          <div className="p-4">
+                          <h3 className="text-2xl font-semibold text-gray-800 text-center">หรรษธร เกษียร</h3>
+                              <span className=" bottom-font-semibold">ตำแหน่ง:</span><span className="text-blue-600 mt-2">System Design Frontend-Main-Developer</span><br />
+                              <span className=" bottom-font-semibold">Frontend:</span><span className="text-blue-600 mt-2">ออกแบบ UI Design Systemของเว็บไซต์</span><br />
+                              <span className=" bottom-font-semibold">Backend:</span><span className="text-blue-600 mt-2">เพิ่มปุ่มเรียกใช้ฟังก์ชั่นที่จะเรียกใช้ระบบหลังบ้าน  </span><br />
+                              <span className=" bottom-font-semibold">ID:</span><span className="text-blue-600 mt-2">1650700964</span><br />
                           </div>
                       </div>
 
@@ -54,12 +53,12 @@ function Ourmember() {
                               alt="อมาวสุ ด้วงอินทร์"
                               className="w-full h-48 object-cover"
                           />
-                          <div className="p-6 text-center">
-                              <h3 className="text-1m font-semibold text-gray-800">อมาวสุ ด้วงอินทร์</h3>
-                              <p className="text-gray-500 mt-2">ตำแหน่ง: UI Structure Design,Frontend-Main-Developer </p>
-                              <p className="text-gray-500">Frontend:หน้าประวัติการจอง </p>
-                              <p className="text-gray-500"> Backend:ดึงข้อมูลจากฐานข้อมูลมาลงหน้าเว็บ</p>
-                              <p className="text-gray-400 mt-4">ID: 1650704404</p>
+                          <div className="p-4">
+                          <h3 className="text-2xl font-semibold text-gray-800 text-center">อมาวสุ ด้วงอินทร์</h3>
+                              <span className=" bottom-font-semibold">ตำแหน่ง:</span><span className="text-blue-600 mt-2">UI Structure Design Frontend-Main-Developer </span><br />
+                              <span className=" bottom-font-semibold">Frontend:</span><span className="text-blue-600 mt-2">หน้าประวัติการจอง</span><br />
+                              <span className=" bottom-font-semibold">Backend:</span><span className="text-blue-600 mt-2">ดึงข้อมูลจากฐานข้อมูลมาลงหน้าเว็บ </span><br />
+                              <span className=" bottom-font-semibold">ID:</span><span className="text-blue-600 mt-2">1650704404</span><br />
                           </div>
                       </div>
 
@@ -69,12 +68,12 @@ function Ourmember() {
                               alt="ฐิติกรณ์ นันทเดชะ"
                               className="w-full h-48 object-cover"
                           />
-                          <div className="p-6 text-center">
-                              <h3 className="text-1m font-semibold text-gray-800">ฐิติกรณ์ นันทเดชะ</h3>
-                              <p className="text-gray-500 mt-2">ตำแหน่ง: Intern,Document,Asset Finder</p>
-                              <p className="text-gray-500">Frontend: จัดตำแหน่งของข้อมูล หาAssetมาลงหน้าเว็บ</p>
-                              <p className="text-gray-500"> Backend: จัดการวางAsset Roomให้ตรงตามข้อมูลในDatabase </p>
-                              <p className="text-gray-400 mt-4">ID: 1650703901</p>
+                          <div className="p-4">
+                          <h3 className="text-2xl font-semibold text-gray-800 text-center">ฐิติกรณ์ นันทเดชะ</h3>
+                              <span className=" bottom-font-semibold">ตำแหน่ง:</span><span className="text-blue-600 mt-2">Intern,Document,Asset Finder</span><br />
+                              <span className=" bottom-font-semibold">Frontend:</span><span className="text-blue-600 mt-2">จัดตำแหน่งของข้อมูล หาAssetมาลงหน้าเว็บ</span><br />
+                              <span className=" bottom-font-semibold">Backend:</span><span className="text-blue-600 mt-2">จัดการวางAsset Roomให้ตรงตามข้อมูลในDatabase </span><br />
+                              <span className=" bottom-font-semibold">ID:</span><span className="text-blue-600 mt-2">1650703901</span><br />
                           </div>
                       </div>
                   </div>
