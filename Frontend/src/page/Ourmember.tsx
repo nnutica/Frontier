@@ -13,10 +13,8 @@ function Ourmember() {
 
                   {/* Team Member Cards */}
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-                      {/* Member 1 */}
-                      
 
-                      {/* Member 2 */}
+                     
                       <div className="bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition duration-300">
                           <img
                               src={Member4}
@@ -33,7 +31,7 @@ function Ourmember() {
                           </div>
                       </div>
 
-                      {/* Member 3 */}
+                     
                       <div className="bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition duration-300">
                           <img
                               src={Member1}
@@ -49,7 +47,7 @@ function Ourmember() {
                           </div>
                       </div>
 
-                      {/* Member 4 */}
+                     
                       <div className="bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition duration-300">
                           <img
                               src={Member2}
@@ -74,8 +72,8 @@ function Ourmember() {
                           <div className="p-6 text-center">
                               <h3 className="text-1m font-semibold text-gray-800">ฐิติกรณ์ นันทเดชะ</h3>
                               <p className="text-gray-500 mt-2">ตำแหน่ง: Intern,Document,Asset Finder</p>
-                              <p className="text-gray-500">Frontend: จัดตำแหน่งของข้อมูล</p>
-                              <p className="text-gray-500"> Backend:Testข้อมูลจาก Postman </p>
+                              <p className="text-gray-500">Frontend: จัดตำแหน่งของข้อมูล หาAssetมาลงหน้าเว็บ</p>
+                              <p className="text-gray-500"> Backend: จัดการวางAsset Roomให้ตรงตามข้อมูลในDatabase </p>
                               <p className="text-gray-400 mt-4">ID: 1650703901</p>
                           </div>
                       </div>
