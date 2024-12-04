@@ -42,7 +42,7 @@ const BookingHistory: React.FC = () => {
 
       // อัปเดต State
       setBookings(bookings.filter((booking) => booking._id !== deleteTarget._id));
-      alert("Booking deleted successfully!");
+      
       setDeleteTarget(null);
     } catch (error) {
       console.error("Error deleting booking:", error);
@@ -106,7 +106,9 @@ const BookingHistory: React.FC = () => {
       )}
       {deleteTarget && (
         <BookingDeleteModal
-          onConfirm={handleDelete}
+        onConfirm={async () => {
+            await handleDelete(); // เรียกฟังก์ชันลบ
+          }}
           onCancel={() => setDeleteTarget(null)}
         />
       )}

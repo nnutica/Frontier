@@ -12,26 +12,7 @@ interface Room {
     availableRooms: number;
 }
 
-const NotificationModal: React.FC<{ message: string; onClose: () => void }> = ({
-    message,
-    onClose,
-  }) => {
-    return (
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-        <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-          <p className="text-gray-700 mb-4">{message}</p>
-          <div className="flex justify-end">
-            <button
-              onClick={onClose}
-              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-            >
-              OK
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  };
+
 
 const BookingUpdateModal: React.FC<Props> = ({ bookingId, onClose }) => {
     const [formData, setFormData] = useState({
