@@ -42,7 +42,7 @@ function Ourmember() {
                           />
                           <div className="p-6 text-center">
                               <h3 className="text-1m font-semibold text-gray-800">หรรษธร เกษียร</h3>
-                              <p className="text-gray-500 mt-2">ตำแหน่ง: นักออกแบบ</p>
+                              <p className="text-gray-500 mt-2">ตำแหน่ง: System Design ,Frontend-Main-Developer</p>
                               <p className="text-gray-500">Frontend: ออกแบบ UI Design Systemของเว็บไซต์ </p>
                               <p className="text-gray-500">Backend:เพิ่มปุ่มเรียกใช้ฟังก์ชั่นที่จะเรียกใช้ระบบหลังบ้าน  </p>
                               <p className="text-gray-400 mt-4">ID: 1650700964</p>
@@ -58,7 +58,7 @@ function Ourmember() {
                           />
                           <div className="p-6 text-center">
                               <h3 className="text-1m font-semibold text-gray-800">อมาวสุ ด้วงอินทร์</h3>
-                              <p className="text-gray-500 mt-2">ตำแหน่ง: UI Design </p>
+                              <p className="text-gray-500 mt-2">ตำแหน่ง: UI Structure Design,Frontend-Main-Developer </p>
                               <p className="text-gray-500">Frontend:หน้าประวัติการจอง </p>
                               <p className="text-gray-500"> Backend:ดึงข้อมูลจากฐานข้อมูลมาลงหน้าเว็บ</p>
                               <p className="text-gray-400 mt-4">ID: 1650704404</p>
@@ -73,7 +73,7 @@ function Ourmember() {
                           />
                           <div className="p-6 text-center">
                               <h3 className="text-1m font-semibold text-gray-800">ฐิติกรณ์ นันทเดชะ</h3>
-                              <p className="text-gray-500 mt-2">ตำแหน่ง: เด็กฝึกงาน</p>
+                              <p className="text-gray-500 mt-2">ตำแหน่ง: Intern,Document,Asset Finder</p>
                               <p className="text-gray-500">Frontend: จัดตำแหน่งของข้อมูล</p>
                               <p className="text-gray-500"> Backend:Testข้อมูลจาก Postman </p>
                               <p className="text-gray-400 mt-4">ID: 1650703901</p>
