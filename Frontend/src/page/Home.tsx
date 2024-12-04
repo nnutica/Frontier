@@ -23,15 +23,15 @@ function Home() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           {/* Promo Card 1 */}
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden" style={{ width: '100%', height: 'auto' }}>
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl" style={{ width: '100%', height: 'auto' }}>
             <img
               src={Promotion1}
               alt="Promo 1"
               className="w-full h-auto object-cover"
             />
             <div className="p-4">
-              <h3 className="text-xl font-semibold text-blue-600">โปรโมชั่น 1</h3>
-              <p className="text-gray-700 text-sm">ส่วนลด 20% สำหรับการจองห้องพักครั้งแรก</p>
+              <h3 className="text-xl font-semibold text-blue-600">Welcome Deal</h3>
+              <p className="text-gray-700 text-sm">ส่วนลด 20% สำหรับการจองครั้งแรกในราคา 2,000 บาท/คืน พร้อมให้คุณเริ่มต้นการพักผ่อนสุดพิเศษ</p>
               <p className="text-lg font-bold text-blue-500 mt-2">฿2,000/คืน</p>
               <button className="bg-blue-500 text-white py-1 px-4 rounded mt-4 hover:bg-blue-600">
                 จองเลย
@@ -40,15 +40,15 @@ function Home() {
           </div>
 
           {/* Promo Card 2 */}
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden" style={{ width: '100%', height: 'auto' }}>
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl" style={{ width: '100%', height: 'auto' }}>
             <img
               src={Promotion3}
               alt="Promo 3"
               className="w-full h-auto object-cover"
             />
             <div className="p-4">
-              <h3 className="text-xl font-semibold text-blue-600">โปรโมชั่น 2</h3>
-              <p className="text-gray-700 text-sm">รับฟรี! อาหารเช้าสำหรับ 2 ท่านเมื่อจองห้องพัก</p>
+              <h3 className="text-xl font-semibold text-blue-600">Breakfast Bliss</h3>
+              <p className="text-gray-700 text-sm">รับฟรี! อาหารเช้าสำหรับ 2 ท่าน เมื่อจองห้องพักราคา 3,500 บาท/คืน เติมเต็มความสุขทุกเช้า</p>
               <p className="text-lg font-bold text-blue-500 mt-2">฿3,500/คืน</p>
               <button className="bg-blue-500 text-white py-1 px-4 rounded mt-4 hover:bg-blue-600">
                 จองเลย
@@ -57,15 +57,15 @@ function Home() {
           </div>
 
           {/* Promo Card 3 */}
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden" style={{ width: '100%', height: 'auto' }}>
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl" style={{ width: '100%', height: 'auto' }}>
             <img
               src={Promotion2}
               alt="Promo 2"
               className="w-full h-auto object-cover"
             />
             <div className="p-4">
-              <h3 className="text-xl font-semibold text-blue-600">โปรโมชั่น 3</h3>
-              <p className="text-gray-700 text-sm">ห้องพักพร้อมบริการสปาฟรี</p>
+              <h3 className="text-xl font-semibold text-blue-600">Relaxation Retreat</h3>
+              <p className="text-gray-700 text-sm">ห้องพักหรูพร้อม บริการสปาฟรี สำหรับจองที่พักราคา 4,000 บาท/คืน สัมผัสความผ่อนคลายในทุกมิติ</p>
               <p className="text-lg font-bold text-blue-500 mt-2">฿4,000/คืน</p>
               <button className="bg-blue-500 text-white py-1 px-4 rounded mt-4 hover:bg-blue-600">
                 จองเลย
@@ -74,15 +74,15 @@ function Home() {
           </div>
 
           {/* Promo Card 4 */}
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden" style={{ width: '100%', height: 'auto' }}>
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl" style={{ width: '100%', height: 'auto' }}>
             <img
               src={Promotion4}
               alt="Promo 4"
               className="w-full h-auto object-cover"
             />
             <div className="p-4">
-              <h3 className="text-xl font-semibold text-blue-600">โปรโมชั่น 4</h3>
-              <p className="text-gray-700 text-sm">รับส่วนลด 15% สำหรับการจองห้องพักระยะยาว</p>
+              <h3 className="text-xl font-semibold text-blue-600">Long Stay Saver</h3>
+              <p className="text-gray-700 text-sm">รับส่วนลด 15% สำหรับการจองที่พักระยะยาว ในราคาห้องพัก 5,000 บาท/คืน คุ้มค่าทุกวันแห่งการพักผ่อน</p>
               <p className="text-lg font-bold text-blue-500 mt-2">฿5,000/คืน</p>
               <button className="bg-blue-500 text-white py-1 px-4 rounded mt-4 hover:bg-blue-600">
                 จองเลย
@@ -96,7 +96,7 @@ function Home() {
         <main className="container mx-auto px-4 py-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Room 1 */}
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl">
               <img
               src={Room1}
               alt="Room 1"
@@ -115,7 +115,7 @@ function Home() {
             </div>
 
             {/* Room 2 */}
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl">
               <img
               src={Room2}
               alt="Room 2"
@@ -134,7 +134,7 @@ function Home() {
             </div>
 
             {/* Room 3 */}
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl">
               <img
               src={Room3}
               alt="Room 3"
@@ -153,7 +153,7 @@ function Home() {
             </div>
 
             {/* Room 4 */}
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden px-4">
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden px-4 hover:shadow-2xl">
               <img
               src={Room4}
               alt="Room 4"
@@ -172,14 +172,12 @@ function Home() {
             </div>
           </div>
           <br />
-          <br />
-          <br />
           {/* Room 5 */}
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl">
               <img
               src={Room5}
               alt="Room 5"
-              className="w-full h-96 object-cover"
+              className="w-full h-96 object-cover scale-x-full scale-y-60"
               />
               <div className="p-6">
                 <h2 className="text-2xl font-bold mb-2">Superstar</h2>

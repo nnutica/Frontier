@@ -1,19 +1,21 @@
-
 function Service() {
-    return (
-        <div className="min-h-screen bg-gray-50 py-12">
+  return (
+    <div className="min-h-screen bg-gray-50 py-12">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">บริการของเรา</h2>
-        <p className="text-lg text-gray-600 text-center mb-12">
-          เรามุ่งมั่นในการมอบประสบการณ์การจองโรงแรมที่สะดวกสบาย รวดเร็ว และปลอดภัย
+        {/* Header Section */}
+        <h2 className="text-4xl font-extrabold text-center text-gray-800 mb-6">
+          บริการของเรา
+        </h2>
+        <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
+          เรามุ่งมั่นในการมอบประสบการณ์การจองโรงแรมที่สะดวกสบาย รวดเร็ว และปลอดภัย ด้วยบริการที่หลากหลายที่พร้อมตอบโจทย์ทุกความต้องการของคุณ
         </p>
 
         {/* Service Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Service 1 */}
-          <div className="bg-white rounded-lg shadow-lg p-6 text-center">
+          <div className="bg-white rounded-lg shadow-lg p-6 text-center transition-transform transform hover:scale-105 hover:shadow-2xl">
             <div className="flex justify-center mb-4">
-              <span className="bg-blue-100 text-blue-500 p-4 rounded-full">
+              <span className="bg-blue-100 text-blue-500 p-4 rounded-full shadow-md">
                 <svg
                   className="w-8 h-8"
                   xmlns="http://www.w3.org/2000/svg"
@@ -30,16 +32,18 @@ function Service() {
                 </svg>
               </span>
             </div>
-            <h3 className="text-xl font-semibold text-gray-800">ค้นหาโรงแรม</h3>
-            <p className="text-gray-600 mt-2">
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">
+              ค้นหาโรงแรม
+            </h3>
+            <p className="text-gray-600">
               ค้นหาโรงแรมที่ตรงกับความต้องการของคุณจากหลายพันแห่งทั่วโลก.
             </p>
           </div>
 
           {/* Service 2 */}
-          <div className="bg-white rounded-lg shadow-lg p-6 text-center">
+          <div className="bg-white rounded-lg shadow-lg p-6 text-center transition-transform transform hover:scale-105 hover:shadow-2xl">
             <div className="flex justify-center mb-4">
-              <span className="bg-green-100 text-green-500 p-4 rounded-full">
+              <span className="bg-green-100 text-green-500 p-4 rounded-full shadow-md">
                 <svg
                   className="w-8 h-8"
                   xmlns="http://www.w3.org/2000/svg"
@@ -56,16 +60,18 @@ function Service() {
                 </svg>
               </span>
             </div>
-            <h3 className="text-xl font-semibold text-gray-800">การจองออนไลน์</h3>
-            <p className="text-gray-600 mt-2">
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">
+              การจองออนไลน์
+            </h3>
+            <p className="text-gray-600">
               จองห้องพักผ่านระบบออนไลน์ที่รวดเร็วและปลอดภัย พร้อมการยืนยันทันที.
             </p>
           </div>
 
           {/* Service 3 */}
-          <div className="bg-white rounded-lg shadow-lg p-6 text-center">
+          <div className="bg-white rounded-lg shadow-lg p-6 text-center transition-transform transform hover:scale-105 hover:shadow-2xl">
             <div className="flex justify-center mb-4">
-              <span className="bg-yellow-100 text-yellow-500 p-4 rounded-full">
+              <span className="bg-yellow-100 text-yellow-500 p-4 rounded-full shadow-md">
                 <svg
                   className="w-8 h-8"
                   xmlns="http://www.w3.org/2000/svg"
@@ -82,15 +88,17 @@ function Service() {
                 </svg>
               </span>
             </div>
-            <h3 className="text-xl font-semibold text-gray-800">สนับสนุนลูกค้า</h3>
-            <p className="text-gray-600 mt-2">
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">
+              สนับสนุนลูกค้า
+            </h3>
+            <p className="text-gray-600">
               ทีมงานพร้อมให้บริการช่วยเหลือ 24/7 ในการแก้ไขปัญหาการจอง.
             </p>
           </div>
         </div>
       </div>
     </div>
-    )
+  );
 }
 
-export default Service
+export default Service;
