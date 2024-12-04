@@ -98,6 +98,23 @@ function Home() {
             {/* Room 1 */}
             <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl">
               <img
+              src={Room3}
+              alt="Room 3"
+              className="w-full h-96 object-cover"
+              />
+              <div className="p-6">
+                <h2 className="text-2xl font-bold mb-2">Standard Room</h2>
+                <p className="text-gray-700 mb-4">
+                  ห้องพักมาตรฐาน สะอาดและคุ้มค่าราคา
+                </p>
+                <p className="text-blue-500 font-semibold text-lg mb-4">฿800/คืน</p>
+                <button className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600">
+                  จองเลย
+                </button>
+              </div>
+            </div>
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl">
+              <img
               src={Room1}
               alt="Room 1"
               className="w-full h-96 object-cover"
@@ -134,23 +151,7 @@ function Home() {
             </div>
 
             {/* Room 3 */}
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl">
-              <img
-              src={Room3}
-              alt="Room 3"
-              className="w-full h-96 object-cover"
-              />
-              <div className="p-6">
-                <h2 className="text-2xl font-bold mb-2">Standard Room</h2>
-                <p className="text-gray-700 mb-4">
-                  ห้องพักมาตรฐาน สะอาดและคุ้มค่าราคา
-                </p>
-                <p className="text-blue-500 font-semibold text-lg mb-4">฿800/คืน</p>
-                <button className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600">
-                  จองเลย
-                </button>
-              </div>
-            </div>
+            
 
             {/* Room 4 */}
             <div className="bg-white rounded-lg shadow-lg overflow-hidden px-4 hover:shadow-2xl">
