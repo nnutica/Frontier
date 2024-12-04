@@ -1,4 +1,4 @@
-export const Nut ={
+const Nut ={
     name:"นิตินัทธ์ ล้ออุทัย",
     Role:"Project Manager,Backend-Developer",
     ProjectManager:"Design ระบบ วางแผนงาน แบ่งงาน",
@@ -7,7 +7,7 @@ export const Nut ={
     StudentID:"1650703596"
     
 }
-export const Tar ={
+ const Tar ={
     name:"หรรษธร เกษียร",
     Role:"System Design ,Frontend-Main-Developer",
     Frontend:"ออกแบบ UI Design Systemของเว็บไซต์ ",
@@ -15,7 +15,7 @@ export const Tar ={
     StudentID:"1650700964"
     
 }
-export const Korya ={
+ const Korya ={
     name:"อมาวสุ ด้วงอินทร์",
     Role:"UI Structure Design,Frontend-Main-Developer",
     Frontend:"วางโครงร่างของหน้าเว็บ ",
@@ -23,7 +23,7 @@ export const Korya ={
     StudentID:"1650704404"
     
 }
-export const Sam ={
+ const Sam={
     name:"ฐิติกรณ์ นันทเดชะ",
     Role:"Intern,Document,Asset Finder",
     Frontend:"จัดตำแหน่งของข้อมูล หาAssetมาลงหน้าเว็บ ",
@@ -31,3 +31,5 @@ export const Sam ={
     StudentID:"1650703901"
     
 }
+
+export { Nut, Tar, Korya, Sam};

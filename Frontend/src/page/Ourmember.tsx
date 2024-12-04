@@ -2,6 +2,7 @@ import Member1 from "../assets/member1.png"
 import Member2 from "../assets/member2.png"
 import Member3 from "../assets/member3.png"
 import Member4 from "../assets/member4.png"
+import {Nut,Tar,Korya,Sam} from "../content/memberdata"
 function Ourmember() {
   return (
       <div>
@@ -22,11 +23,12 @@ function Ourmember() {
                               className="w-full h-48 object-cover"
                           />
                           <div className="p-4">
-                              <h3 className="text-2xl font-semibold text-gray-800 text-center">นิตินัทธ์ ล้ออุทัย</h3>
-                              <span className=" bottom-font-semibold">ตำแหน่ง:</span><span className="text-blue-600 mt-2">Project Manager Design ระบบ วางแผนงาน แบ่งงาน</span><br />
-                              <span className=" bottom-font-semibold">Frontend:</span><span className="text-blue-600 mt-2">ทำให้สามารถเรียกใช้งานฟังก์ชั่นจากฝั่ง Frontendได้</span><br />
-                              <span className=" bottom-font-semibold">Backend:</span><span className="text-blue-600 mt-2">ทำฟังก์ชั้น CRUD ทั้งระบบ สร้างDatabase  </span><br />
-                              <span className=" bottom-font-semibold">ID:</span><span className="text-blue-600 mt-2">1650703596</span><br />
+                              <h3 className="text-2xl font-semibold text-gray-800 text-center">{Nut.name}</h3>
+                              <span className=" bottom-font-semibold">ตำแหน่ง:</span><span className="text-blue-600 mt-2">{Nut.Role}</span><br />
+                              <span className=" bottom-font-semibold">Project Manager:</span><span className="text-blue-600 mt-2">{Nut.ProjectManager}</span><br />
+                              <span className=" bottom-font-semibold">Frontend:</span><span className="text-blue-600 mt-2">{Nut.Frontend}</span><br />
+                              <span className=" bottom-font-semibold">Backend:</span><span className="text-blue-600 mt-2">{Nut.Backend}  </span><br />
+                              <span className=" bottom-font-semibold">ID:</span><span className="text-blue-600 mt-2">{Nut.StudentID}</span><br />
                           </div>
                       </div>
 
@@ -38,11 +40,11 @@ function Ourmember() {
                               className="w-full h-48 object-cover"
                           />
                           <div className="p-4">
-                          <h3 className="text-2xl font-semibold text-gray-800 text-center">หรรษธร เกษียร</h3>
-                              <span className=" bottom-font-semibold">ตำแหน่ง:</span><span className="text-blue-600 mt-2">System Design Frontend-Main-Developer</span><br />
-                              <span className=" bottom-font-semibold">Frontend:</span><span className="text-blue-600 mt-2">ออกแบบ UI Design Systemของเว็บไซต์</span><br />
-                              <span className=" bottom-font-semibold">Backend:</span><span className="text-blue-600 mt-2">เพิ่มปุ่มเรียกใช้ฟังก์ชั่นที่จะเรียกใช้ระบบหลังบ้าน  </span><br />
-                              <span className=" bottom-font-semibold">ID:</span><span className="text-blue-600 mt-2">1650700964</span><br />
+                          <h3 className="text-2xl font-semibold text-gray-800 text-center">{Tar.name}</h3>
+                              <span className=" bottom-font-semibold">ตำแหน่ง:</span><span className="text-blue-600 mt-2">{Tar.Role}</span><br />
+                              <span className=" bottom-font-semibold">Frontend:</span><span className="text-blue-600 mt-2">{Tar.Frontend}</span><br />
+                              <span className=" bottom-font-semibold">Backend:</span><span className="text-blue-600 mt-2">{Tar.Backend} </span><br />
+                              <span className=" bottom-font-semibold">ID:</span><span className="text-blue-600 mt-2">{Tar.StudentID}</span><br />
                           </div>
                       </div>
 
@@ -54,11 +56,11 @@ function Ourmember() {
                               className="w-full h-48 object-cover"
                           />
                           <div className="p-4">
-                          <h3 className="text-2xl font-semibold text-gray-800 text-center">อมาวสุ ด้วงอินทร์</h3>
-                              <span className=" bottom-font-semibold">ตำแหน่ง:</span><span className="text-blue-600 mt-2">UI Structure Design Frontend-Main-Developer </span><br />
-                              <span className=" bottom-font-semibold">Frontend:</span><span className="text-blue-600 mt-2">หน้าประวัติการจอง</span><br />
-                              <span className=" bottom-font-semibold">Backend:</span><span className="text-blue-600 mt-2">ดึงข้อมูลจากฐานข้อมูลมาลงหน้าเว็บ </span><br />
-                              <span className=" bottom-font-semibold">ID:</span><span className="text-blue-600 mt-2">1650704404</span><br />
+                          <h3 className="text-2xl font-semibold text-gray-800 text-center">{Korya.name}</h3>
+                              <span className=" bottom-font-semibold">ตำแหน่ง:</span><span className="text-blue-600 mt-2">{Korya.Role} </span><br />
+                              <span className=" bottom-font-semibold">Frontend:</span><span className="text-blue-600 mt-2">{Korya.Frontend}</span><br />
+                              <span className=" bottom-font-semibold">Backend:</span><span className="text-blue-600 mt-2">{Korya.Backend}</span><br />
+                              <span className=" bottom-font-semibold">ID:</span><span className="text-blue-600 mt-2">{Korya.StudentID}</span><br />
                           </div>
                       </div>
 
@@ -69,11 +71,11 @@ function Ourmember() {
                               className="w-full h-48 object-cover"
                           />
                           <div className="p-4">
-                          <h3 className="text-2xl font-semibold text-gray-800 text-center">ฐิติกรณ์ นันทเดชะ</h3>
-                              <span className=" bottom-font-semibold">ตำแหน่ง:</span><span className="text-blue-600 mt-2">Intern,Document,Asset Finder</span><br />
-                              <span className=" bottom-font-semibold">Frontend:</span><span className="text-blue-600 mt-2">จัดตำแหน่งของข้อมูล หาAssetมาลงหน้าเว็บ</span><br />
-                              <span className=" bottom-font-semibold">Backend:</span><span className="text-blue-600 mt-2">จัดการวางAsset Roomให้ตรงตามข้อมูลในDatabase </span><br />
-                              <span className=" bottom-font-semibold">ID:</span><span className="text-blue-600 mt-2">1650703901</span><br />
+                          <h3 className="text-2xl font-semibold text-gray-800 text-center">{Sam.name}</h3>
+                              <span className=" bottom-font-semibold">ตำแหน่ง:</span><span className="text-blue-600 mt-2">{Sam.Role}</span><br />
+                              <span className=" bottom-font-semibold">Frontend:</span><span className="text-blue-600 mt-2">{Sam.Frontend}</span><br />
+                              <span className=" bottom-font-semibold">Backend:</span><span className="text-blue-600 mt-2">{Sam.Backend}</span><br />
+                              <span className=" bottom-font-semibold">ID:</span><span className="text-blue-600 mt-2">{Sam.StudentID}</span><br />
                           </div>
                       </div>
                   </div>
