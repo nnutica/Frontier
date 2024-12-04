@@ -14,19 +14,7 @@ function Ourmember() {
                   {/* Team Member Cards */}
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
                       {/* Member 1 */}
-                      <div className="bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition duration-300">
-                          <img
-                              src={Member3}
-                              alt="ฐิติกรณ์ นันทเดชะ"
-                              className="w-full h-48 object-cover"
-                          />
-                          <div className="p-6 text-center">
-                              <h3 className="text-1m font-semibold text-gray-800">ฐิติกรณ์ นันทเดชะ</h3>
-                              <p className="text-gray-500 mt-2">ตำแหน่ง: หัวหน้าทีม</p>
-                              <p className="text-gray-500">หน้าที่: วางแผนและบริหารโครงการ</p>
-                              <p className="text-gray-400 mt-4">ID: 1650703901</p>
-                          </div>
-                      </div>
+                      
 
                       {/* Member 2 */}
                       <div className="bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition duration-300">
@@ -37,8 +25,10 @@ function Ourmember() {
                           />
                           <div className="p-6 text-center">
                               <h3 className="text-1m font-semibold text-gray-800">นิตินัทธ์ ล้ออุทัย</h3>
-                              <p className="text-gray-500 mt-2">ตำแหน่ง: นักพัฒนา</p>
-                              <p className="text-gray-500">หน้าที่: เขียนโค้ดและพัฒนาเว็บไซต์</p>
+                              <p className="text-gray-500 mt-2">ตำแหน่ง: หัวหน้า </p>
+                              <p className="text-gray-500">Project Manager: Design ระบบ วางแผนงาน แบ่งงาน </p>
+                              <p className="text-gray-500">Frontend: ทำให้สามารถเรียกใช้งานฟังก์ชั่นจากฝั่ง Frontendได้  </p>
+                              <p className="text-gray-500">Backend: ทำฟังก์ชั้น CRUD ทั้งระบบ สร้างDatabase  </p>
                               <p className="text-gray-400 mt-4">ID: 1650703596</p>
                           </div>
                       </div>
@@ -53,7 +43,8 @@ function Ourmember() {
                           <div className="p-6 text-center">
                               <h3 className="text-1m font-semibold text-gray-800">หรรษธร เกษียร</h3>
                               <p className="text-gray-500 mt-2">ตำแหน่ง: นักออกแบบ</p>
-                              <p className="text-gray-500">หน้าที่: ออกแบบ UI/UX</p>
+                              <p className="text-gray-500">Frontend: ออกแบบ UI Design Systemของเว็บไซต์ </p>
+                              <p className="text-gray-500">Backend:เพิ่มปุ่มเรียกใช้ฟังก์ชั่นที่จะเรียกใช้ระบบหลังบ้าน  </p>
                               <p className="text-gray-400 mt-4">ID: 1650700964</p>
                           </div>
                       </div>
@@ -67,9 +58,25 @@ function Ourmember() {
                           />
                           <div className="p-6 text-center">
                               <h3 className="text-1m font-semibold text-gray-800">อมาวสุ ด้วงอินทร์</h3>
-                              <p className="text-gray-500 mt-2">ตำแหน่ง: นักการตลาด</p>
-                              <p className="text-gray-500">หน้าที่: วางแผนการตลาดและโฆษณา</p>
+                              <p className="text-gray-500 mt-2">ตำแหน่ง: UI Design </p>
+                              <p className="text-gray-500">Frontend:หน้าประวัติการจอง </p>
+                              <p className="text-gray-500"> Backend:ดึงข้อมูลจากฐานข้อมูลมาลงหน้าเว็บ</p>
                               <p className="text-gray-400 mt-4">ID: 1650704404</p>
+                          </div>
+                      </div>
+
+                      <div className="bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition duration-300">
+                          <img
+                              src={Member3}
+                              alt="ฐิติกรณ์ นันทเดชะ"
+                              className="w-full h-48 object-cover"
+                          />
+                          <div className="p-6 text-center">
+                              <h3 className="text-1m font-semibold text-gray-800">ฐิติกรณ์ นันทเดชะ</h3>
+                              <p className="text-gray-500 mt-2">ตำแหน่ง: เด็กฝึกงาน</p>
+                              <p className="text-gray-500">Frontend: จัดตำแหน่งของข้อมูล</p>
+                              <p className="text-gray-500"> Backend:Testข้อมูลจาก Postman </p>
+                              <p className="text-gray-400 mt-4">ID: 1650703901</p>
                           </div>
                       </div>
                   </div>
