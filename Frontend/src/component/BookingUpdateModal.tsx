@@ -12,6 +12,27 @@ interface Room {
     availableRooms: number;
 }
 
+const NotificationModal: React.FC<{ message: string; onClose: () => void }> = ({
+    message,
+    onClose,
+  }) => {
+    return (
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+          <p className="text-gray-700 mb-4">{message}</p>
+          <div className="flex justify-end">
+            <button
+              onClick={onClose}
+              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
 const BookingUpdateModal: React.FC<Props> = ({ bookingId, onClose }) => {
     const [formData, setFormData] = useState({
         guestName: "",
@@ -24,6 +45,8 @@ const BookingUpdateModal: React.FC<Props> = ({ bookingId, onClose }) => {
     });
     const [rooms, setRooms] = useState<Room[]>([]);
     const [error, setError] = useState("");
+    const [successMessage, setSuccessMessage] = useState("");
+    const [errorModal, setErrorModal] = useState(false);
 
     // Fetch available rooms from the database
     const fetchRooms = async () => {
@@ -80,24 +103,25 @@ const BookingUpdateModal: React.FC<Props> = ({ bookingId, onClose }) => {
         try {
             const { roomType, previousRoomType, ...rest } = formData;
 
-            // ถ้าห้องเดิมและห้องใหม่ไม่เหมือนกัน ให้ส่งคำขอไป backend
             if (roomType !== previousRoomType) {
-                // เพิ่มห้องว่างให้ห้องเดิม
                 await axios.put(`/api/rooms/${previousRoomType}/increment`);
-
-                // ลดห้องว่างจากห้องใหม่
                 await axios.put(`/api/rooms/${roomType}/decrement`);
             }
 
-            // อัปเดตข้อมูลการจอง
             await axios.put(`/api/bookings/${bookingId}`, { ...rest, roomType });
 
-            alert("Booking updated successfully!");
-            onClose();
+            setSuccessMessage("Booking updated successfully!");
         } catch (error) {
             console.error("Error updating booking:", error);
             setError("Failed to update booking. Please try again.");
+            setErrorModal(true); // Show error modal
         }
+    };
+
+    const closeModal = () => {
+        setSuccessMessage("");
+        setErrorModal(false);
+        onClose();
     };
 
     return (
@@ -195,6 +219,35 @@ const BookingUpdateModal: React.FC<Props> = ({ bookingId, onClose }) => {
                         </button>
                     </div>
                 </div>
+                {successMessage && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                    <div className="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 className="text-lg font-bold mb-4">Success</h3>
+                        <p className="mb-4">{successMessage}</p>
+                        <button
+                            onClick={closeModal}
+                            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                        >
+                            OK
+                        </button>
+                    </div>
+                </div>
+            )}
+            {errorModal && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                    <div className="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 className="text-lg font-bold mb-4">Error</h3>
+                        <p className="mb-4">{error}</p>
+                        <button
+                            onClick={closeModal}
+                            className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+                        >
+                            Close
+                        </button>
+                    </div>
+                </div>
+            )}        
+                
             </div>
         </div>
     );
