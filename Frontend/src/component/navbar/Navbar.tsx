@@ -1,70 +1,169 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import Icon from "../assets/icon.png"
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import Icon from "../../assets/icon.png";
 
-interface NavbarProps {
-    className?: string; // รองรับ prop className
-}
+const Navbar: React.FC = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-const Navbar: React.FC<NavbarProps> = ({ className }) => {
-    const location = useLocation(); // ใช้ตรวจสอบเส้นทางที่ active
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
-    // ไอคอนสำหรับ Tab Bar
-    const tabs = [
-        { name: 'Home', path: '/', icon: 'home' },
-        { name: 'About', path: '/about', icon: 'info-circle' },
-        { name: 'Booking', path: '/Booking', icon: 'calendar' },
-        { name: 'Service', path: '/service', icon: 'tools' },
-        { name: 'Dashboard', path: '/Dashboard', icon: 'chart-bar' },
-    ];
+  return (
+    <nav className="bg-white shadow-md fixed w-full z-10">
+      {/* Container */}
+      <div className="flex items-center justify-between px-4 py-4">
+        {/* Logo */}
+        <div className="flex items-center">
+          <img
+            src={Icon}
+            alt="Your Company"
+            className="h-10 w-10 mr-2"
+          />
+          <Link to="/" className="text-2xl font-bold text-blue-600">
+            Fron<span className="text-gray-800">tier</span>
+          </Link>
+        </div>
 
-    return (
-        <nav className={`bg-white shadow-md fixed w-full z-10 ${className || ''}`}>
-            {/* Desktop Menu */}
-            <div className="hidden md:flex container mx-auto px-4 py-4 items-center justify-between">
-            <img 
-                         className="h-10 w-10 object-cover flex items-center" 
-                        src="https://img2.pic.in.th/pic/56fefe1df5253aac.png" 
-                         alt="Your Company"
-                />
-            <Link to="/" className="text-2xl font-bold text-blue-600">
-                    Room<span className="text-gray-800">Snap</span>
-                </Link>
-            <div className="flex shrink-0 items-center">
-                </div>
-                <ul className="flex space-x-8 text-gray-700">
-                    <li><Link to="/" className="hover:text-blue-600 transition duration-300">Home</Link></li>
-                    <li><Link to="/about" className="hover:text-blue-600 transition duration-300">About</Link></li>
-                    <li><Link to="/Booking" className="hover:text-blue-600 transition duration-300">Booking</Link></li>
-                    <li><Link to="/ourmember" className="hover:text-blue-600 transition duration-300">Our member</Link></li>
-                    <li><Link to="/service" className="hover:text-blue-600 transition duration-300">Service</Link></li>
-                    <li><Link to="/Dashboard" className="hover:text-blue-600 transition duration-300">Dashboard</Link></li>
-                </ul>
-            </div>
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden text-gray-700 text-2xl focus:outline-none"
+          onClick={toggleMobileMenu}
+        >
+          {isMobileMenuOpen ? "✖" : "☰"}
+        </button>
 
-            {/* Mobile Tab Bar */}
-            <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white shadow-lg flex justify-between items-center px-4 py-2 border-t border-gray-200">
-                {tabs.map((tab) => (
-                    <Link
-                        key={tab.name}
-                        to={tab.path}
-                        className={`flex flex-col items-center justify-center text-sm font-medium ${
-                            location.pathname === tab.path ? 'text-blue-600' : 'text-gray-500'
-                        }`}
-                    >
-                        {/* ใช้ Font Awesome หรือ Tailwind Icons */}
-                        <i
-                            className={`fas fa-${tab.icon} text-lg ${
-                                location.pathname === tab.path ? 'text-blue-600' : 'text-gray-500'
-                            }`}
-                        ></i>
-                        <span>{tab.name}</span>
-                    </Link>
-                ))}
-            </div>
-        </nav>
-    );
+        {/* Desktop Menu */}
+        <ul className="hidden md:flex space-x-8 text-gray-700">
+          <li>
+            <Link
+              to="/"
+              className="hover:text-blue-600 transition duration-300"
+            >
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/about"
+              className="hover:text-blue-600 transition duration-300"
+            >
+              About
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/Booking"
+              className="hover:text-blue-600 transition duration-300"
+            >
+              Booking
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/ourmember"
+              className="hover:text-blue-600 transition duration-300"
+            >
+              Our Member
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/service"
+              className="hover:text-blue-600 transition duration-300"
+            >
+              Service
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/Dashboard"
+              className="hover:text-blue-600 transition duration-300"
+            >
+              Dashboard
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/bookingrecord"
+              className="hover:text-blue-600 transition duration-300"
+            >
+              Record
+            </Link>
+          </li>
+        </ul>
+      </div>
+
+      {/* Mobile Dropdown Menu */}
+      {isMobileMenuOpen && (
+        <ul className="md:hidden flex flex-col space-y-4 px-4 pb-4 text-gray-700">
+          <li>
+            <Link
+              to="/"
+              className="hover:text-blue-600 transition duration-300"
+              onClick={toggleMobileMenu}
+            >
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/about"
+              className="hover:text-blue-600 transition duration-300"
+              onClick={toggleMobileMenu}
+            >
+              About
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/Booking"
+              className="hover:text-blue-600 transition duration-300"
+              onClick={toggleMobileMenu}
+            >
+              Booking
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/ourmember"
+              className="hover:text-blue-600 transition duration-300"
+              onClick={toggleMobileMenu}
+            >
+              Our Member
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/service"
+              className="hover:text-blue-600 transition duration-300"
+              onClick={toggleMobileMenu}
+            >
+              Service
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/Dashboard"
+              className="hover:text-blue-600 transition duration-300"
+              onClick={toggleMobileMenu}
+            >
+              Dashboard
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/bookingrecord"
+              className="hover:text-blue-600 transition duration-300"
+              onClick={toggleMobileMenu}
+            >
+              Record
+            </Link>
+          </li>
+        </ul>
+      )}
+    </nav>
+  );
 };
 
 export default Navbar;
-
