@@ -74,14 +74,6 @@ const Navbar: React.FC<NavbarProps> = () => {
           </li>
           <li>
             <Link
-              to="/service"
-              className="hover:text-blue-600 transition duration-300"
-            >
-              Service
-            </Link>
-          </li>
-          <li>
-            <Link
               to="/Dashboard"
               className="hover:text-blue-600 transition duration-300"
             >

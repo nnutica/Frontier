@@ -8,7 +8,6 @@ import ProcessingPage from './page/ProcessingPage';
 import PaymentSuccessPage from './page/PaymentSuccess';
 import Dashboard from './page/Dashboard';
 import Booking from './page/Booking';
-import Service from './page/service';
 import Ourmember from './page/Ourmember';
 import BookingHistory from './page/ฺBookingRecord';
 
@@ -28,7 +27,6 @@ function App() {
           <Route path="/payment-success" element={<PaymentSuccessPage />} />
           <Route path="/Dashboard" element={<Dashboard />} />
           <Route path='/Booking' element={<Booking />} />
-          <Route path="/service" element={<Service />} />
           <Route path='/ourmember' element={<Ourmember />} />
           <Route path='/bookingrecord' element={<BookingHistory />} />
 
