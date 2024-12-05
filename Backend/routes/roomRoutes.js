@@ -104,14 +104,14 @@ router.put('/:id', async (req, res) => {
         const booking = await Booking.findById(req.params.id);
         if (!booking) return res.status(404).json({ message: "Booking not found" });
 
-        // ถ้าประเภทห้องเปลี่ยนแปลง
+        
         if (previousRoomType !== newRoomType) {
-            // เพิ่มห้องว่างให้ประเภทห้องเดิม
+            
             await Room.findOneAndUpdate(
                 { type: previousRoomType },
                 { $inc: { availableRooms: 1 } }
             );
-            // ลดห้องว่างให้ประเภทห้องใหม่
+            
             const updatedRoom = await Room.findOneAndUpdate(
                 { type: newRoomType },
                 { $inc: { availableRooms: -1 } },
@@ -122,7 +122,6 @@ router.put('/:id', async (req, res) => {
             }
         }
 
-        // อัปเดตข้อมูลการจอง
         const updatedBooking = await Booking.findByIdAndUpdate(req.params.id, bookingData, { new: true });
         res.json(updatedBooking);
     } catch (error) {
