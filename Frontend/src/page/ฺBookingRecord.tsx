@@ -11,6 +11,7 @@ interface Booking {
   checkIn: string;
   checkOut: string;
   paymentStatus: string;
+  totalPrice: number; // เพิ่มฟิลด์นี้ใน Interface
 }
 
 const BookingHistory: React.FC = () => {
@@ -37,12 +38,11 @@ const BookingHistory: React.FC = () => {
       // ลบการจอง
       await axios.delete(`/api/bookings/${deleteTarget._id}`);
 
-      // เพิ่มจำนวนห้องว่างในฐานข้อมูล
+      // อัปเดตจำนวนห้องว่าง
       await axios.put(`/api/rooms/${deleteTarget.roomType}/increment`);
 
       // อัปเดต State
       setBookings(bookings.filter((booking) => booking._id !== deleteTarget._id));
-      
       setDeleteTarget(null);
     } catch (error) {
       console.error("Error deleting booking:", error);
@@ -62,6 +62,7 @@ const BookingHistory: React.FC = () => {
               <th className="border border-gray-300 px-4 py-2">Guests</th>
               <th className="border border-gray-300 px-4 py-2">Check-In</th>
               <th className="border border-gray-300 px-4 py-2">Check-Out</th>
+              <th className="border border-gray-300 px-4 py-2">Total Price</th>
               <th className="border border-gray-300 px-4 py-2">Payment Status</th>
               <th className="border border-gray-300 px-4 py-2">Actions</th>
             </tr>
@@ -69,8 +70,8 @@ const BookingHistory: React.FC = () => {
           <tbody>
             {bookings.length === 0 ? (
               <tr>
-                <td colSpan={7} className="text-center text-gray-500 py-4">
-                No bookings available at the moment
+                <td colSpan={8} className="text-center text-gray-500 py-4">
+                  No bookings available at the moment
                 </td>
               </tr>
             ) : (
@@ -85,6 +86,9 @@ const BookingHistory: React.FC = () => {
                   <td className="border border-gray-300 px-4 py-2">
                     {new Date(booking.checkOut).toLocaleDateString()}
                   </td>
+                  <td className="border border-gray-300 px-4 py-2">
+                    {booking.totalPrice ? `฿${booking.totalPrice.toLocaleString()}` : "N/A"}
+                  </td>
                   <td className="border border-gray-300 px-4 py-2">{booking.paymentStatus}</td>
                   <td className="border border-gray-300 px-4 py-2">
                     <button
@@ -94,11 +98,21 @@ const BookingHistory: React.FC = () => {
                       Edit
                     </button>
                     <button
-                      className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
+                      className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 mr-2"
                       onClick={() => setDeleteTarget(booking)}
                     >
                       Delete
                     </button>
+
+                    {/* ปุ่ม "Pay Now" จะปรากฏเมื่อ paymentStatus เป็น Pending */}
+                    {booking.paymentStatus === "Pending" && (
+                      <a
+                        href={`/payment/${booking._id}`}
+                        className="bg-green-500 text-white px-2 py-1 rounded hover:bg-green-600"
+                      >
+                        Pay Now
+                      </a>
+                    )}
                   </td>
                 </tr>
               ))
@@ -114,10 +128,8 @@ const BookingHistory: React.FC = () => {
       )}
       {deleteTarget && (
         <BookingDeleteModal
-          onConfirm={async () => {
-            await handleDelete(); // เรียกฟังก์ชันลบ
-          }}
-          onCancel={() => setDeleteTarget(null)} // รีเซ็ต deleteTarget และปิด Modal
+          onConfirm={handleDelete}
+          onCancel={() => setDeleteTarget(null)}
         />
       )}
     </div>
