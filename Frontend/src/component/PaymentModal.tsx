@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import qrpayment from "../assets/qrpayment.png";
 
 type PaymentModalProps = {
-    onClose: () => void; // กำหนดชนิดของ onClose เป็นฟังก์ชันที่ไม่มีพารามิเตอร์และไม่มีค่าที่ส่งกลับ
+    onClose: () => void; 
 };
 
 const PaymentModal: React.FC<PaymentModalProps> = ({ onClose }) => {
@@ -20,7 +21,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ onClose }) => {
 
         setLoading(true); // เริ่มโหลด
         try {
-            // อัปเดต paymentStatus เป็น "paid"
+            // อัปเดต paymentStatus เป็น "Paid"
             await axios.put(`/api/bookings/${bookingId}`, {
                 paymentStatus: "Paid",
             });
@@ -40,7 +41,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ onClose }) => {
             <div className="bg-white rounded-lg shadow-lg w-96 p-6">
                 <h2 className="text-2xl font-bold mb-4">Choose Payment Method</h2>
 
-                {/* ตรงนี้ตกแต่งได้ พยายามยุ่งแค่ในส่วนของ ClassName กับ ข้อความในTag P */}
+                
                 <div className="space-y-2">
                     <div
                         className={`border rounded-lg p-3 ${
@@ -68,6 +69,26 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ onClose }) => {
                     >
                         <h3 className="font-bold">Bank Transfer</h3>
                         <p className="text-sm text-gray-600">Transfer money to our bank.</p>
+                    </div>
+                    {/* เพิ่ม QR Payment */}
+                    <div
+                        className={`border rounded-lg p-3 ${
+                            selectedMethod === "qr_payment" ? "bg-blue-100" : ""
+                        }`}
+                        onClick={() => setSelectedMethod("qr_payment")}
+                    >
+                        <h3 className="font-bold">QR Payment</h3>
+                        <p className="text-sm text-gray-600">Pay by scanning a QR code.</p>
+                        {selectedMethod === "qr_payment" && (
+                            <div className="mt-4">
+                                <h4 className="font-semibold">Scan this QR Code:</h4>
+                                <img
+                                    src={qrpayment} // ใส่ path รูป QR Code
+                                    alt="QR Code"
+                                    className="mt-2 w-40 h-40 mx-auto"
+                                />
+                            </div>
+                        )}
                     </div>
                 </div>
                 {/* สิ้นสุดวิธีชำระ */}
