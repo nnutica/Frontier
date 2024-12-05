@@ -5,7 +5,7 @@ const router = express.Router();
 // GET all rooms
 router.get('/', async (req, res) => {
     try {
-        const rooms = await Room.find(); // ตรวจสอบว่า `availableRooms` มีในผลลัพธ์
+        const rooms = await Room.find(); 
         res.json(rooms);
     } catch (error) {
         console.error("Error fetching rooms:", error);
