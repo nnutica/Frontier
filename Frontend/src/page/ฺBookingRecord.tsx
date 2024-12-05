@@ -106,12 +106,13 @@ const BookingHistory: React.FC = () => {
       )}
       {deleteTarget && (
         <BookingDeleteModal
-        onConfirm={async () => {
-            await handleDelete(); // เรียกฟังก์ชันลบ
-          }}
-          onCancel={() => setDeleteTarget(null)}
-        />
+          onConfirm={async () => {
+         await handleDelete(); // เรียกฟังก์ชันลบ
+      }}
+        onCancel={() => setDeleteTarget(null)} // รีเซ็ต deleteTarget และปิด Modal
+       />
       )}
+
     </div>
   );
 };
