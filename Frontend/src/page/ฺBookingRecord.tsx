@@ -67,34 +67,42 @@ const BookingHistory: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {bookings.map((booking) => (
-              <tr key={booking._id}>
-                <td className="border border-gray-300 px-4 py-2">{booking.guestName}</td>
-                <td className="border border-gray-300 px-4 py-2">{booking.roomType}</td>
-                <td className="border border-gray-300 px-4 py-2">{booking.guests}</td>
-                <td className="border border-gray-300 px-4 py-2">
-                  {new Date(booking.checkIn).toLocaleDateString()}
-                </td>
-                <td className="border border-gray-300 px-4 py-2">
-                  {new Date(booking.checkOut).toLocaleDateString()}
-                </td>
-                <td className="border border-gray-300 px-4 py-2">{booking.paymentStatus}</td>
-                <td className="border border-gray-300 px-4 py-2">
-                  <button
-                    className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600 mr-2"
-                    onClick={() => setSelectedBookingId(booking._id)}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
-                    onClick={() => setDeleteTarget(booking)}
-                  >
-                    Delete
-                  </button>
+            {bookings.length === 0 ? (
+              <tr>
+                <td colSpan={7} className="text-center text-gray-500 py-4">
+                No bookings available at the moment
                 </td>
               </tr>
-            ))}
+            ) : (
+              bookings.map((booking) => (
+                <tr key={booking._id}>
+                  <td className="border border-gray-300 px-4 py-2">{booking.guestName}</td>
+                  <td className="border border-gray-300 px-4 py-2">{booking.roomType}</td>
+                  <td className="border border-gray-300 px-4 py-2">{booking.guests}</td>
+                  <td className="border border-gray-300 px-4 py-2">
+                    {new Date(booking.checkIn).toLocaleDateString()}
+                  </td>
+                  <td className="border border-gray-300 px-4 py-2">
+                    {new Date(booking.checkOut).toLocaleDateString()}
+                  </td>
+                  <td className="border border-gray-300 px-4 py-2">{booking.paymentStatus}</td>
+                  <td className="border border-gray-300 px-4 py-2">
+                    <button
+                      className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600 mr-2"
+                      onClick={() => setSelectedBookingId(booking._id)}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
+                      onClick={() => setDeleteTarget(booking)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>
@@ -107,12 +115,11 @@ const BookingHistory: React.FC = () => {
       {deleteTarget && (
         <BookingDeleteModal
           onConfirm={async () => {
-         await handleDelete(); // เรียกฟังก์ชันลบ
-      }}
-        onCancel={() => setDeleteTarget(null)} // รีเซ็ต deleteTarget และปิด Modal
-       />
+            await handleDelete(); // เรียกฟังก์ชันลบ
+          }}
+          onCancel={() => setDeleteTarget(null)} // รีเซ็ต deleteTarget และปิด Modal
+        />
       )}
-
     </div>
   );
 };
