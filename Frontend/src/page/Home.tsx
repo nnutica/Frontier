@@ -1,4 +1,5 @@
 import "../index.css"
+import { useNavigate } from "react-router-dom";
 import Promotion1 from "../assets/Promotion1.png"
 import Promotion2 from "../assets/Promotion2.png"
 import Promotion3 from "../assets/Promotion3.png"
@@ -9,7 +10,11 @@ import Room3 from "../assets/room3.png"
 import Room4 from "../assets/room4.png"
 import Room5 from "../assets/room5.png"
 function Home() {
+const navigate =useNavigate();
 
+const handleBookingClick = (path: string) => {
+  navigate(path);
+};
   return (
 
     <div className="min-h-screen bg-gray-100 py-12">
@@ -33,7 +38,9 @@ function Home() {
               <h3 className="text-xl font-semibold text-blue-600">Welcome Deal</h3>
               <p className="text-gray-700 text-sm">ส่วนลด 20% สำหรับการจองครั้งแรกในราคา 2,000 บาท/คืน พร้อมให้คุณเริ่มต้นการพักผ่อนสุดพิเศษ</p>
               <p className="text-lg font-bold text-blue-500 mt-2">฿1,200/คืน</p>
-              <button className="bg-blue-500 text-white py-1 px-4 rounded mt-4 hover:bg-blue-600">
+              <button
+              onClick={() => handleBookingClick("/Booking")}
+              className="bg-blue-500 text-white py-1 px-4 rounded mt-4 hover:bg-blue-600">
                 จองเลย
               </button>
             </div>
@@ -50,7 +57,9 @@ function Home() {
               <h3 className="text-xl font-semibold text-blue-600">Breakfast Bliss</h3>
               <p className="text-gray-700 text-sm">รับฟรี! อาหารเช้าสำหรับ 2 ท่าน เมื่อจองห้องพักราคา 3,500 บาท/คืน เติมเต็มความสุขทุกเช้า</p>
               <p className="text-lg font-bold text-blue-500 mt-2">฿2,500/คืน</p>
-              <button className="bg-blue-500 text-white py-1 px-4 rounded mt-4 hover:bg-blue-600">
+              <button
+              onClick={() => handleBookingClick("/Booking")}
+              className="bg-blue-500 text-white py-1 px-4 rounded mt-4 hover:bg-blue-600">
                 จองเลย
               </button>
             </div>
@@ -67,7 +76,9 @@ function Home() {
               <h3 className="text-xl font-semibold text-blue-600">Relaxation Retreat</h3>
               <p className="text-gray-700 text-sm">ห้องพักหรูพร้อม บริการสปาฟรี สำหรับจองที่พักราคา 4,000 บาท/คืน สัมผัสความผ่อนคลายในทุกมิติ</p>
               <p className="text-lg font-bold text-blue-500 mt-2">฿800/คืน</p>
-              <button className="bg-blue-500 text-white py-1 px-4 rounded mt-4 hover:bg-blue-600">
+              <button
+              onClick={() => handleBookingClick("/Booking")}
+              className="bg-blue-500 text-white py-1 px-4 rounded mt-4 hover:bg-blue-600">
                 จองเลย
               </button>
             </div>
@@ -84,7 +95,9 @@ function Home() {
               <h3 className="text-xl font-semibold text-blue-600">Long Stay Saver</h3>
               <p className="text-gray-700 text-sm">รับส่วนลด 15% สำหรับการจองที่พักระยะยาว ในราคาห้องพัก 5,000 บาท/คืน คุ้มค่าทุกวันแห่งการพักผ่อน</p>
               <p className="text-lg font-bold text-blue-500 mt-2">฿5,000/คืน</p>
-              <button className="bg-blue-500 text-white py-1 px-4 rounded mt-4 hover:bg-blue-600">
+              <button
+              onClick={() => handleBookingClick("/Booking")}
+              className="bg-blue-500 text-white py-1 px-4 rounded mt-4 hover:bg-blue-600">
                 จองเลย
               </button>
             </div>
@@ -108,7 +121,9 @@ function Home() {
                   ห้องพักมาตรฐาน สะอาดและคุ้มค่าราคา
                 </p>
                 <p className="text-blue-500 font-semibold text-lg mb-4">฿800/คืน</p>
-                <button className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600">
+                <button
+                onClick={() => handleBookingClick("/Booking")}
+                className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600">
                   จองเลย
                 </button>
               </div>
@@ -125,7 +140,9 @@ function Home() {
                   ห้องพักหรูหรา พร้อมวิวสวยงามและสิ่งอำนวยความสะดวกครบครัน
                 </p>
                 <p className="text-blue-500 font-semibold text-lg mb-4">฿1,200/คืน</p>
-                <button className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600">
+                <button
+                onClick={() => handleBookingClick("/Booking")}
+                className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600">
                   จองเลย
                 </button>
               </div>
@@ -144,7 +161,9 @@ function Home() {
                   ห้องพักสำหรับครอบครัว กว้างขวางและสะดวกสบาย
                 </p>
                 <p className="text-blue-500 font-semibold text-lg mb-4">฿2,500/คืน</p>
-                <button className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600">
+                <button 
+                onClick={() => handleBookingClick("/Booking")}
+                className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600">
                   จองเลย
                 </button>
               </div>
@@ -166,7 +185,9 @@ function Home() {
                   ห้องพักพิเศษสำหรับผู้บริหาร พร้อมสิ่งอำนวยความสะดวกชั้นเยี่ยม
                 </p>
                 <p className="text-blue-500 font-semibold text-lg mb-4">฿5,000/คืน</p>
-                <button className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600">
+                <button 
+                onClick={() => handleBookingClick("/Booking")}
+                className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600">
                   จองเลย
                 </button>
               </div>
@@ -186,7 +207,9 @@ function Home() {
                   ห้องพักพิเศษสำหรับผู้บริหาร พร้อมสิ่งอำนวยความสะดวกชั้นเยี่ยม
                 </p>
                 <p className="text-blue-500 font-semibold text-lg mb-4">฿100,000/คืน</p>
-                <button className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600">
+                <button 
+                onClick={() => handleBookingClick("/Booking")}
+                className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600">
                   จองเลย
                 </button>
               </div>
