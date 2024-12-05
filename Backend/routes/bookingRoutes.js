@@ -57,6 +57,46 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+// PUT update paymentStatus
+router.put('/:id/paymentStatus', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { paymentStatus, paymentMethod } = req.body; // รับข้อมูล paymentStatus และ paymentMethod
 
+        // ค้นหาการจองที่มี ID ตรงกับที่ส่งมา
+        const updatedBooking = await Booking.findByIdAndUpdate(
+            id,
+            { paymentStatus, paymentMethod }, // อัปเดต paymentStatus และ paymentMethod
+            { new: true, runValidators: true } // กำหนดให้ส่งผลลัพธ์ที่อัปเดตแล้วกลับมา
+        );
+
+        if (!updatedBooking) {
+            return res.status(404).json({ message: "Booking not found" });
+        }
+
+        res.status(200).json(updatedBooking); // ส่งข้อมูลการจองที่อัปเดตแล้ว
+    } catch (error) {
+        console.error("Error updating payment status:", error);
+        res.status(500).json({ message: "Error updating payment status", error });
+    }
+});
+
+
+
+// อัปเดตทุกเอกสารในฐานข้อมูลที่ไม่มี totalPrice
+const updateBookings = async () => {
+  const bookings = await Booking.find();
+  
+  bookings.forEach(async (booking) => {
+    if (!booking.totalPrice) {
+      const totalPrice = calculateTotalPrice(booking);  // คำนวณราคาสุทธิ
+      booking.totalPrice = totalPrice;
+      await booking.save();  // บันทึกการเปลี่ยนแปลง
+    }
+  });
+};
+
+
+  
 
 module.exports = router;

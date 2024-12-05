@@ -22,6 +22,8 @@ const BookingModal: React.FC<Props> = ({ room, onClose }) => {
   const [availableRooms, setAvailableRooms] = useState<number | null>(null);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [isRedirecting, setIsRedirecting] = useState(false);
+  const [bookingId, setBookingId] = useState<string | null>(null);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -95,6 +97,7 @@ const BookingModal: React.FC<Props> = ({ room, onClose }) => {
     try {
       await axios.post("/api/bookings", booking);
       await axios.put(`/api/rooms/${room.type}/decrement`);
+      setBookingId(booking.bookingId);
       setShowConfirmationModal(true);
     } catch (err) {
       console.error("Error booking room:", err);
@@ -105,7 +108,7 @@ const BookingModal: React.FC<Props> = ({ room, onClose }) => {
   const handlePayNow = () => {
     setIsRedirecting(true);
     setTimeout(() => {
-      navigate("/payment");
+      navigate(`/payment/${bookingId}`, { state: { bookingId } });
     }, 2000);
   };
 
