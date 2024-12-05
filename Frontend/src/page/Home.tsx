@@ -32,7 +32,7 @@ function Home() {
             <div className="p-4">
               <h3 className="text-xl font-semibold text-blue-600">Welcome Deal</h3>
               <p className="text-gray-700 text-sm">ส่วนลด 20% สำหรับการจองครั้งแรกในราคา 2,000 บาท/คืน พร้อมให้คุณเริ่มต้นการพักผ่อนสุดพิเศษ</p>
-              <p className="text-lg font-bold text-blue-500 mt-2">฿2,000/คืน</p>
+              <p className="text-lg font-bold text-blue-500 mt-2">฿1,200/คืน</p>
               <button className="bg-blue-500 text-white py-1 px-4 rounded mt-4 hover:bg-blue-600">
                 จองเลย
               </button>
@@ -49,7 +49,7 @@ function Home() {
             <div className="p-4">
               <h3 className="text-xl font-semibold text-blue-600">Breakfast Bliss</h3>
               <p className="text-gray-700 text-sm">รับฟรี! อาหารเช้าสำหรับ 2 ท่าน เมื่อจองห้องพักราคา 3,500 บาท/คืน เติมเต็มความสุขทุกเช้า</p>
-              <p className="text-lg font-bold text-blue-500 mt-2">฿3,500/คืน</p>
+              <p className="text-lg font-bold text-blue-500 mt-2">฿2,500/คืน</p>
               <button className="bg-blue-500 text-white py-1 px-4 rounded mt-4 hover:bg-blue-600">
                 จองเลย
               </button>
@@ -66,7 +66,7 @@ function Home() {
             <div className="p-4">
               <h3 className="text-xl font-semibold text-blue-600">Relaxation Retreat</h3>
               <p className="text-gray-700 text-sm">ห้องพักหรูพร้อม บริการสปาฟรี สำหรับจองที่พักราคา 4,000 บาท/คืน สัมผัสความผ่อนคลายในทุกมิติ</p>
-              <p className="text-lg font-bold text-blue-500 mt-2">฿4,000/คืน</p>
+              <p className="text-lg font-bold text-blue-500 mt-2">฿800/คืน</p>
               <button className="bg-blue-500 text-white py-1 px-4 rounded mt-4 hover:bg-blue-600">
                 จองเลย
               </button>
