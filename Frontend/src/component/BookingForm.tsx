@@ -82,9 +82,8 @@ const BookingModal: React.FC<Props> = ({ room, onClose }) => {
 
   const handleBooking = async () => {
     if (!validateForm()) return;
-
+  
     const booking = {
-      bookingId: `${Date.now()}-${room.type}`,
       guestName,
       roomType: room.type,
       guests,
@@ -93,22 +92,29 @@ const BookingModal: React.FC<Props> = ({ room, onClose }) => {
       totalPrice,
       paymentStatus: "Pending",
     };
-
+  
     try {
-      await axios.post("/api/bookings", booking);
-      await axios.put(`/api/rooms/${room.type}/decrement`);
-      setBookingId(booking.bookingId);
-      setShowConfirmationModal(true);
+      const response = await axios.post("/api/bookings", booking); // สร้างการจอง
+      const bookingData = response.data; // ดึงข้อมูลจาก response
+      await axios.put(`/api/rooms/${room.type}/decrement`); // ลดจำนวนห้องว่าง
+  
+      setBookingId(bookingData._id); // ใช้ _id จาก API
+      setShowConfirmationModal(true); // แสดง modal ยืนยัน
     } catch (err) {
       console.error("Error booking room:", err);
       alert("Failed to book the room.");
     }
   };
-
+  
   const handlePayNow = () => {
+    if (!bookingId) {
+      alert("Booking ID not found. Please try again.");
+      return;
+    }
+  
     setIsRedirecting(true);
     setTimeout(() => {
-      navigate(`/payment/${bookingId}`, { state: { bookingId } });
+      navigate(`/payment/${bookingId}`, { state: { bookingId } }); // ใช้ _id ในการนำทาง
     }, 2000);
   };
 
