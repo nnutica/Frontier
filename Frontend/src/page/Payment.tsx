@@ -60,6 +60,48 @@ const PaymentPage: React.FC = () => {
 
       {/* Payment Modal */}
       {showPaymentModal && <PaymentModal onClose={() => setShowPaymentModal(false)} />}
+        
+        {/* ตัวใหม่*/}
+        <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="bg-white p-6 rounded-lg shadow-md max-w-sm w-full">
+        <h1 className="text-xl font-bold text-gray-800 text-center mb-4">
+          Receipt
+        </h1>
+        <div className="space-y-4">
+          <div className="flex justify-between">
+            <span className="text-gray-600">Guest Name:</span>
+            <span className="font-semibold text-gray-800">John Doe</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="text-gray-600">Room Type:</span>
+            <span className="font-semibold text-gray-800">Deluxe Suite</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="text-gray-600">Check-In:</span>
+            <span className="font-semibold text-gray-800">2024-12-01</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="text-gray-600">Check-Out:</span>
+            <span className="font-semibold text-gray-800">2024-12-05</span>
+          </div>
+          <hr className="my-4 border-gray-300" />
+          <div className="flex justify-between">
+            <span className="text-lg font-semibold text-gray-800">Total Price:</span>
+            <span className="text-lg font-bold text-blue-600">450.00฿</span>
+          </div>
+        </div>
+        <div className="mt-6 text-center">
+          <p className="text-gray-500 text-sm">Thank you for your stay!</p>
+          <p className="text-gray-500 text-sm">We hope to see you again soon.</p>
+        </div>
+        <button
+          onClick={() => setShowPaymentModal(true)}
+          className="bg-blue-500 text-white px-6 py-3 rounded-lg shadow mt-6 hover:bg-blue-600"
+        >
+          Choose Payment Method
+        </button>
+      </div>
+    </div>
     </div>
   );
 };
