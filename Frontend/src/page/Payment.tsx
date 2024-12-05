@@ -1,5 +1,5 @@
 import { useState } from "react";
-import PaymentModal from "../component/PaymentModal/PaymentModal";
+import PaymentModal from "../component/PaymentModal";
 
 const PaymentPage = () => {
     const [showModal, setShowModal] = useState(false);

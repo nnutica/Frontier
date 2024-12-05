@@ -18,17 +18,15 @@ const BookingModal: React.FC<Props> = ({ room, onClose }) => {
   const [guests, setGuests] = useState(1);
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
-  const [paymentStatus, setPaymentStatus] = useState("Pending");
+  const [totalPrice, setTotalPrice] = useState<number | null>(null);
   const [availableRooms, setAvailableRooms] = useState<number | null>(null);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [isRedirecting, setIsRedirecting] = useState(false);
   const navigate = useNavigate();
 
-  // ดึงจำนวนห้องว่าง
   useEffect(() => {
     const fetchRoomAvailability = async () => {
       try {
-        console.log('Room ID:', room._id);
         const response = await axios.get(`/api/rooms/${room._id}/availability`);
         setAvailableRooms(response.data.availableRooms);
       } catch (err) {
@@ -39,12 +37,50 @@ const BookingModal: React.FC<Props> = ({ room, onClose }) => {
     fetchRoomAvailability();
   }, [room._id]);
 
-  const handleBooking = async () => {
+  const calculateTotalPrice = () => {
+    if (checkIn && checkOut) {
+      const startDate = new Date(checkIn);
+      const endDate = new Date(checkOut);
+      const days = (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24);
+      if (days > 0) {
+        setTotalPrice(days * room.price);
+      } else {
+        setTotalPrice(null);
+      }
+    } else {
+      setTotalPrice(null);
+    }
+  };
+
+  useEffect(() => {
+    calculateTotalPrice();
+  }, [checkIn, checkOut]);
+
+  const validateForm = () => {
+    if (!guestName || !checkIn || !checkOut || guests < 1) {
+      alert("Please fill in all required fields.");
+      return false;
+    }
+
+    const startDate = new Date(checkIn);
+    const endDate = new Date(checkOut);
+
+    if (endDate <= startDate) {
+      alert("Check-out date must be after check-in date.");
+      return false;
+    }
+
     if (availableRooms !== null && availableRooms <= 0) {
       alert("No rooms available for this type.");
-      return;
+      return false;
     }
-  
+
+    return true;
+  };
+
+  const handleBooking = async () => {
+    if (!validateForm()) return;
+
     const booking = {
       bookingId: `${Date.now()}-${room.type}`,
       guestName,
@@ -52,23 +88,19 @@ const BookingModal: React.FC<Props> = ({ room, onClose }) => {
       guests,
       checkIn,
       checkOut,
-      paymentStatus,
+      totalPrice,
+      paymentStatus: "Pending",
     };
-  
+
     try {
-      // สร้างการจอง
       await axios.post("/api/bookings", booking);
-  
-      // ลดจำนวนห้องว่าง (ใช้ room.type)
       await axios.put(`/api/rooms/${room.type}/decrement`);
-  
       setShowConfirmationModal(true);
     } catch (err) {
       console.error("Error booking room:", err);
       alert("Failed to book the room.");
     }
   };
-  
 
   const handlePayNow = () => {
     setIsRedirecting(true);
@@ -82,7 +114,7 @@ const BookingModal: React.FC<Props> = ({ room, onClose }) => {
       <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-xl font-bold mb-4">Book {room.type} Room</h2>
         <p className="mb-4">
-          <strong>Price:</strong> ${room.price} per night
+          <strong>Price:</strong> {room.price} baht per night
         </p>
         {availableRooms !== null ? (
           <p className="mb-4">
@@ -131,6 +163,11 @@ const BookingModal: React.FC<Props> = ({ room, onClose }) => {
               className="w-full border rounded px-3 py-2"
             />
           </div>
+          {totalPrice !== null && (
+            <p className="mb-4 text-green-600">
+              <strong>Total Price:</strong> {totalPrice} baht
+            </p>
+          )}
           <div className="flex justify-end">
             <button
               type="button"
