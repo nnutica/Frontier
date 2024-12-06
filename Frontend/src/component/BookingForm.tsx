@@ -6,6 +6,7 @@ interface Room {
   _id: string;
   type: string;
   price: number;
+  availableRooms: number;
 }
 
 interface Props {
@@ -82,7 +83,7 @@ const BookingModal: React.FC<Props> = ({ room, onClose }) => {
 
   const handleBooking = async () => {
     if (!validateForm()) return;
-  
+
     const booking = {
       guestName,
       roomType: room.type,
@@ -92,12 +93,12 @@ const BookingModal: React.FC<Props> = ({ room, onClose }) => {
       totalPrice,
       paymentStatus: "Pending",
     };
-  
+
     try {
       const response = await axios.post("/api/bookings", booking); // สร้างการจอง
       const bookingData = response.data; // ดึงข้อมูลจาก response
       await axios.put(`/api/rooms/${room.type}/decrement`); // ลดจำนวนห้องว่าง
-  
+
       setBookingId(bookingData._id); // ใช้ _id จาก API
       setShowConfirmationModal(true); // แสดง modal ยืนยัน
     } catch (err) {
@@ -105,13 +106,13 @@ const BookingModal: React.FC<Props> = ({ room, onClose }) => {
       alert("Failed to book the room.");
     }
   };
-  
+
   const handlePayNow = () => {
     if (!bookingId) {
       alert("Booking ID not found. Please try again.");
       return;
     }
-  
+
     setIsRedirecting(true);
     setTimeout(() => {
       navigate(`/payment/${bookingId}`, { state: { bookingId } }); // ใช้ _id ในการนำทาง
